@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import doctor_1 from '../../../assets/Homepage/Expert_1.png'
 export default function DoctorsCard() {
     return (
@@ -15,7 +16,7 @@ export default function DoctorsCard() {
                         <p className='inline-flex gap-2 items-center'><i className="fa-solid fa-dollar-sign"></i>$15</p>
                     </div>
                     <div className="card-actions">
-                        <button className="btn btn-wide bg-transparent border border-[#F7A582] ">View Profile</button>
+                        <NavLink to={"/doctors/1"} className="btn btn-wide bg-transparent border border-[#F7A582] ">View Profile</NavLink>
                     </div>
                 </div>
             </div>
