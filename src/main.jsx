@@ -9,6 +9,10 @@ import MainLayout from './Layouts/MainLayout.jsx';
 import App from './App.jsx';
 import DoctorProfile from './Components/DoctorsPage/DoctorProfile.jsx';
 import ChooseService from './Components/Appointment/ChooseService.jsx';
+import Registration from './Components/Registration.jsx';
+import Login from './Components/Login.jsx';
+import ErrorPage from './Components/ErrorPage.jsx';
+
 
 const router = createBrowserRouter([
   {
@@ -24,8 +28,20 @@ const router = createBrowserRouter([
         element: <ChooseService />
       },
       {
+        path: "/registration",
+        element: <Registration />
+      },
+      {
+        path: "/login",
+        element: <Login />
+      },
+      {
         path: "/doctors/:id",
         element: <DoctorProfile />
+      },
+      {
+        path: "*",
+        element: <ErrorPage />
       },
     ]
   },

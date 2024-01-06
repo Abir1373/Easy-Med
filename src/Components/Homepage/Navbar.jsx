@@ -33,7 +33,7 @@ export default function Navbar() {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn btn-accent">Login</a>
+                <NavLink to={"/registration"} className="btn btn-accent">Login</NavLink>
             </div>
         </div>
     )
