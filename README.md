@@ -1,3 +1,6 @@
+#This is a medical system web application
+## Here, people can take the appointment and other related stufs can be done simultaneously
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
