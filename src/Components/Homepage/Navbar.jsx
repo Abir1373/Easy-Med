@@ -1,8 +1,9 @@
 import { NavLink } from 'react-router-dom'
 import navicon from '../../assets/Navicon.svg'
+
 export default function Navbar() {
     const Navmenu = <>
-        <li><a>Home</a></li>
+        <li><NavLink to={"/"}>Home</NavLink></li>
         <li>
             <details>
                 <summary>About</summary>
@@ -33,8 +34,9 @@ export default function Navbar() {
                 </ul>
             </div>
             <div className="navbar-end">
-                <NavLink to={"/registration"} className="btn btn-accent">Login</NavLink>
+                <NavLink to={"/login"} className="btn btn-accent">Login</NavLink>
             </div>
+
         </div>
     )
 }
