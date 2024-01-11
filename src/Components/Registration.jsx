@@ -17,7 +17,7 @@ export default function Registration() {
 
     return (
         <div className='grid grid-cols-1 lg:grid-cols-4'>
-            <div className='col-span-2 bg-[#07332F] py-24'>
+            <div className='col-span-2 bg-[#07332F] py-16'>
                 <img src={art} alt="" />
                 <img src={sideimg} alt="" className='w-5/6 mx-auto' />
             </div>

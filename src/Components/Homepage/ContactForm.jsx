@@ -11,16 +11,16 @@ export default function ContactForm() {
             </div>
             <div className="col-span-4 space-y-6">
                 <div className="flex flex-col md:flex-row justify-between gap-4">
-                    <input type="text" placeholder="Name" className="input input-bordered w-full max-w-xs bg-[#ffffff0d]" />
-                    <input type="email" placeholder="Email" className="input input-bordered w-full max-w-xs bg-[#ffffff0d]" />
+                    <input type="text" placeholder="Name" className="input input-bordered w-full max-w-xs bg-[#ffffff33]" />
+                    <input type="email" placeholder="Email" className="input input-bordered w-full max-w-xs bg-[#ffffff33]" />
                 </div>
                 <div className="flex flex-col md:flex-row justify-between gap-4">
-                    <input type="number" placeholder="Mobile number" className="input input-bordered w-full max-w-xs bg-[#ffffff0d]" />
-                    <input type="text" placeholder="doctor name" className="input input-bordered w-full max-w-xs bg-[#ffffff0d]" />
+                    <input type="number" placeholder="Mobile number" className="input input-bordered w-full max-w-xs bg-[#ffffff33]" />
+                    <input type="text" placeholder="doctor name" className="input input-bordered w-full max-w-xs bg-[#ffffff33]" />
                 </div>
                 <div className="flex flex-col md:flex-row justify-between gap-4">
-                    <input type="date" placeholder="Date" className="input input-bordered w-full max-w-xs bg-[#ffffff0d]" />
-                    <input type="text" placeholder="time" className="input input-bordered w-full max-w-xs bg-[#ffffff0d]" />
+                    <input type="date" placeholder="Date" className="input input-bordered w-full max-w-xs bg-[#ffffff33]" />
+                    <input type="text" placeholder="time" className="input input-bordered w-full max-w-xs bg-[#ffffff33]" />
                 </div>
                 <input type="submit" value="Register" className="btn btn-block bg-[#F7A582] text-white rounded-md border-none" />
 

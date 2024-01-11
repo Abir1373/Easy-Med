@@ -1,4 +1,3 @@
-import bannerimg_1 from '../../assets/bannerimg_1.png'
 export default function Banner() {
     return (
         <div className="bg-[#07332F] px-10 py-36 flex flex-col-reverse md:flex-row justify-evenly items-center">
@@ -8,7 +7,7 @@ export default function Banner() {
                 <button className="bg-[#F7A582] px-8 py-4 rounded-md text-xl font-semibold">All services</button>
             </div>
             <div>
-                <img src={bannerimg_1} alt="" />
+                <img src="https://i.ibb.co/RDkXtDJ/bannerimg-1.png" alt="" />
             </div>
         </div>
     )

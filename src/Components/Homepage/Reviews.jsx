@@ -1,5 +1,3 @@
-import patient_1 from '../../assets/Homepage/patient_1.svg'
-import patient_2 from '../../assets/Homepage/patient_2.svg'
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
@@ -23,7 +21,7 @@ export default function Reviews() {
                             <div className='w-full md:w-2/4 items-center border border-[#E6E6E6] shadow-md rounded-md py-10 px-5'>
                                 <div className='flex justify-between items-center'>
                                     <div className='flex flex-col md:flex-row gap-2 items-center'>
-                                        <img src={patient_1} alt="" />
+                                        <img src="https://i.ibb.co/m0kkt7K/patient-1.jpg" alt="" />
                                         <div>
                                             <h1 className="font-bold text-xl">Awlad Hossain</h1>
                                             <p>Product Designer</p>
@@ -42,7 +40,7 @@ export default function Reviews() {
                             <div className='w-full md:w-2/4 items-center border border-[#E6E6E6] shadow-md rounded-md py-10 px-5'>
                                 <div className='flex justify-between items-center'>
                                     <div className='flex flex-col md:flex-row gap-2 items-center'>
-                                        <img src={patient_2} alt="" />
+                                        <img src="https://i.ibb.co/0XwqvJc/patient-2.jpg" alt="" />
                                         <div>
                                             <h1 className="font-bold text-xl">Farhana Hossain</h1>
                                             <p>Brand Designer</p>
@@ -66,7 +64,7 @@ export default function Reviews() {
                             <div className='w-full md:w-2/4 items-center border border-[#E6E6E6] shadow-md rounded-md py-10 px-5'>
                                 <div className='flex justify-between items-center'>
                                     <div className='flex flex-col md:flex-row gap-2 items-center'>
-                                        <img src={patient_1} alt="" />
+                                        <img src="https://i.ibb.co/m0kkt7K/patient-1.jpg" alt="" />
                                         <div>
                                             <h1 className="font-bold text-xl">Awlad Hossain</h1>
                                             <p>Product Designer</p>

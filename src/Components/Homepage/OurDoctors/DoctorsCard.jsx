@@ -1,11 +1,10 @@
 import { NavLink } from 'react-router-dom'
-import doctor_1 from '../../../assets/Homepage/Expert_1.png'
 export default function DoctorsCard() {
     return (
         <div>
             <div className="card w-fit bg-base-100 shadow-xl">
                 <figure className="px-4 pt-10">
-                    <img src={doctor_1} alt="Shoes" className="rounded-xl" />
+                    <img src="https://i.ibb.co/YB9Mgc6/Expert-1.png" alt="Shoes" className="rounded-xl" />
                 </figure>
                 <div className="card-body items-center text-center">
                     <h2 className="card-title">Karyen Anderson</h2>

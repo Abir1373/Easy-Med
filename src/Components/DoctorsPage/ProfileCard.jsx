@@ -1,4 +1,3 @@
-import doctorimg from "../../assets/Homepage/Expert_1.png"
 import { Rating } from '@smastrom/react-rating'
 
 import '@smastrom/react-rating/style.css'
@@ -7,7 +6,7 @@ export default function ProfileCard() {
         <div>
             <div className="hero bg-base-200 my-8 rounded-md">
                 <div className="hero-content flex-col lg:flex-row">
-                    <img src={doctorimg} className="max-w-sm rounded-lg shadow-2xl" />
+                    <img src="https://i.ibb.co/YB9Mgc6/Expert-1.png" className="max-w-sm rounded-lg shadow-2xl" />
                     <div>
                         <h1 className="text-5xl font-bold">Dr. Ruby Perrin</h1>
                         <p className="text-gray-400 font-medium">MBBS, MD - General Medicine</p>
