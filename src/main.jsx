@@ -5,6 +5,16 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
+
 import MainLayout from './Layouts/MainLayout.jsx';
 import App from './App.jsx';
 import DoctorProfile from './Components/DoctorsPage/DoctorProfile.jsx';
@@ -12,7 +22,20 @@ import ChooseService from './Components/Appointment/ChooseService.jsx';
 import Registration from './Components/Registration.jsx';
 import Login from './Components/Login.jsx';
 import ErrorPage from './Components/ErrorPage.jsx';
+import DbMain from './Components/dashboard/dbmain/DbMain.jsx';
+import ManageDoctors from './Components/dashboard/managedoctors.jsx/ManageDoctors.jsx';
+import AllUsers from './Components/dashboard/allusers/AllUsers.jsx';
+import DashboardLayout from './Components/dashboard/DashboardLayout.jsx';
+import AddADoctor from './Components/dashboard/addadoctor/AddADoctor.jsx';
+import MyAppointments from './Components/dashboard/myappointments/MyAppointments.jsx';
+import MyReviews from './Components/dashboard/myreviews/MyReviews.jsx';
+import MyHistory from './Components/dashboard/myhistory/MyHistory.jsx';
 
+
+
+
+
+const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
@@ -43,12 +66,50 @@ const router = createBrowserRouter([
         path: "*",
         element: <ErrorPage />
       },
-    ]
+    ],
   },
+  {
+    path: "dboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "dbmain",
+        element: <DbMain></DbMain>
+      },
+      {
+        path: "addadoctor",
+        element: <AddADoctor />
+      },
+      {
+        path: "allusers",
+        element: <AllUsers></AllUsers>
+      },
+      {
+        path: "managedoctors",
+        element: <ManageDoctors></ManageDoctors>
+      },
+      {
+        path: "myappointments",
+        element: <MyAppointments></MyAppointments>
+      },
+      {
+        path: "myreviews",
+        element: <MyReviews></MyReviews>
+      },
+      {
+        path: "myhistory",
+        element: <MyHistory/>
+      },
+      
+      
+    ],
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>,
 )
