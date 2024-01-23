@@ -30,6 +30,7 @@ import AddADoctor from './Components/dashboard/addadoctor/AddADoctor.jsx';
 import MyAppointments from './Components/dashboard/myappointments/MyAppointments.jsx';
 import MyReviews from './Components/dashboard/myreviews/MyReviews.jsx';
 import MyHistory from './Components/dashboard/myhistory/MyHistory.jsx';
+import AuthProvider from './providers/AuthProvider.jsx';
 
 
 
@@ -98,18 +99,20 @@ const router = createBrowserRouter([
       },
       {
         path: "myhistory",
-        element: <MyHistory/>
+        element: <MyHistory />
       },
-      
-      
+
+
     ],
   }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
+    <AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router}></RouterProvider>
+      </QueryClientProvider>
+    </AuthProvider>
   </React.StrictMode>,
 )

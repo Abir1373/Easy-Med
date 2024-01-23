@@ -1,7 +1,17 @@
 import { NavLink } from 'react-router-dom'
 import navicon from '../../assets/Navicon.svg'
+import { useContext } from 'react'
+import { AuthContext } from '../../providers/AuthProvider'
 
 export default function Navbar() {
+    const { user, logOut } = useContext(AuthContext)
+    if (!user) {
+        <span className="loading loading-spinner text-error"></span>
+    }
+    console.log(user)
+    const LOGOUT = () => {
+        logOut()
+    }
     const Navmenu = <>
         <li><NavLink to={"/"}>Home</NavLink></li>
         <li>
@@ -34,7 +44,11 @@ export default function Navbar() {
                 </ul>
             </div>
             <div className="navbar-end">
-                <NavLink to={"/login"} className="btn btn-accent">Login</NavLink>
+                {
+                    user === null ? <NavLink to={"/login"} className="btn btn-accent">Login</NavLink> :
+                        <button onClick={LOGOUT} className="btn btn-accent">Logout</button>
+                }
+
             </div>
 
         </div>

@@ -1,17 +1,42 @@
 import sideimg from '../assets/Regpage_vector.svg'
 import art from '../assets/Group.svg'
-import { NavLink } from 'react-router-dom'
-import { useForm } from "react-hook-form"
+import { Link, useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../providers/AuthProvider'
+import axios from 'axios';
 
 export default function Registration() {
-
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm()
-    const onSubmit = (data) => {
-        console.log(data)
+    const { createUser } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const handleReg = e => {
+        e.preventDefault()
+        const form = e.target
+        const name = form.name.value
+        const username = form.username.value
+        const email = form.email.value
+        const password = form.password.value
+        console.log(name, username, email, password)
+        const UserInfo = {
+            'name': name,
+            'username': username,
+            'email': email,
+            'password': password,
+            'user_role': 'user',
+        }
+        createUser(email, password)
+            .then(res => {
+                const user = res.user;
+                console.log(user);
+                axios.post(`http://localhost:5000/users`, UserInfo)
+                    .then((res) => {
+                        console.log(res)
+                    })
+            })
+            .catch(err => {
+                console.log(err);
+            })
+            navigate('/')
+            
     }
 
 
@@ -23,34 +48,84 @@ export default function Registration() {
             </div>
             <div className='col-span-2 py-20'>
                 <h2 className="text-center font-bold text-3xl mb-5">Sign Up to Doc House</h2>
-                <form action="" onSubmit={handleSubmit(onSubmit)} className='w-2/3 mx-auto space-y-4'>
-                    <div className='flex flex-col gap-1'>
-                        <label htmlFor="Name" className='text-[18px] font-bold'>Name</label>
-                        <input type="text" placeholder="Enter name" className="text-[#9D9C9C] bg-[#F3F3F3] py-3 px-4 font-[Source Sans 3] text-[16px] rounded" {...register("name", { required: true })} />
-                        {errors.name && <p role="alert" className='text-red-500 font-semibold'>Name is required</p>}
+                <form className="max-w-sm mx-auto" onSubmit={handleReg}>
+
+                    <div className="mb-5">
+                        <label htmlFor="email" className="font-bold block mb-2 text-sm font-medium text-xl">
+                            Name
+                        </label>
+                        <input
+                            name='name'
+                            type="text"
+                            id="name"
+                            placeholder="Enter your name"
+                            className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            required
+                        />
                     </div>
 
-                    <div className='flex flex-col gap-1'>
-                        <label htmlFor="username" className='text-[18px] font-bold'>Username</label>
-                        <input type="text" placeholder="Enter username" className="text-[#9D9C9C] bg-[#F3F3F3] py-3 px-4 font-[Source Sans 3] text-[16px] rounded" {...register("username", { required: true })} />
-                        {errors.username && <p role="alert" className='text-red-500 font-semibold'>{errors.username.message}</p>}
-                        {errors.username && <p role="alert" className='text-red-500 font-semibold'>username is required</p>}
+                    <div className="mb-5">
+                        <label htmlFor="email" className="font-bold block mb-2 text-sm font-medium text-xl">
+                            User Name
+                        </label>
+                        <input
+                            name='username'
+                            type="text"
+                            id="username"
+                            placeholder="Enter your username"
+                            className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            required
+                        />
                     </div>
 
-                    <div className='flex flex-col gap-1'>
-                        <label htmlFor="email" className='text-[18px] font-bold'>Email</label>
-                        <input type="email" placeholder="Enter email" className="text-[#9D9C9C] bg-[#F3F3F3] py-3 px-4 font-[Source Sans 3] text-[16px] rounded" {...register("email", { required: true })} />
-                        {errors.email && <p role="alert" className='text-red-500 font-semibold'>Email is required</p>}
+                    <div className="mb-5">
+                        <label htmlFor="email" className="font-bold block mb-2 text-sm font-medium text-xl">
+                            Email Address
+                        </label>
+                        <input
+                            name='email'
+                            type="email"
+                            id="email"
+                            placeholder="Enter your email"
+                            className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            required
+                        />
                     </div>
-
-                    <div className='flex flex-col gap-1'>
-                        <label htmlFor="password" className='text-[18px] font-bold'>Password</label>
-                        <input type="password" placeholder="Enter password" className="text-[#9D9C9C] bg-[#F3F3F3] py-3 px-4 font-[Source Sans 3] text-[16px] rounded" {...register("password", { required: true })} />
-                        {errors.password && <p role="alert" className='text-red-500 font-semibold'>password is required</p>}
+                    <div className="mb-5">
+                        <label htmlFor="password" className="block mb-2 text-sm font-medium text-xl font-bold">
+                            Your password
+                        </label>
+                        <input
+                            name='password'
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            required
+                        />
                     </div>
-                    <div>
-                        <input type="submit" value="Register" className='btn btn-block bg-[#F7A582] rounded-md text-white text-[18px]' />
-                        <p className='text-gray-500 text-center mt-2'>Already registered? Go to <NavLink to={"/login"} className='text-[#F7A582] font-bold'>SIGN IN</NavLink></p>
+                    {/* <div className="flex items-start mb-5">
+                        <div className="flex items-center h-5">
+                            <input
+                                id="remember"
+                                type="checkbox"
+                                value=""
+                                className="h-16 text-xl w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+                                required
+                            />
+                        </div>
+                        <label htmlFor="remember" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            Remember me
+                        </label>
+                    </div> */}
+                    <button
+                        type="submit"
+                        className="h-16 text-xl text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                        Submit
+                    </button>
+                    <div className='text-center text-xl mt-5'>
+                        Please register at first. Go to <Link to='/login'><span className='text-2xl font-bold text-orange-300'>SIGN IN</span></Link>
                     </div>
                 </form>
             </div>

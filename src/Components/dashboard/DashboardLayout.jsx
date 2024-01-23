@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import Navbar from '../Homepage/Navbar';
-
+import getSingleUser from '../../api/getSingleUser';
 const DashboardLayout = ({ children }) => {
     const [clicked, setClicked] = useState(1);
-    const [userClicked, setUserClicked] = useState(1) ; 
-    let userrole = 'user'
+    const [userClicked, setUserClicked] = useState(1);
+    
+    let [singleUserData] = getSingleUser()
+    if (!singleUserData || singleUserData.length===0) {
+        return <span className="loading loading-spinner text-error"></span>
+    }
+    let userrole = singleUserData[0].user_role
+    console.log(singleUserData)
     return (
         <div>
             {/* navbar */}
