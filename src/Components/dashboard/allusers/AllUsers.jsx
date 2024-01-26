@@ -13,6 +13,7 @@ const AllUsers = () => {
     const handleRemoveUser = () => {
         console.log('remove user')
     }
+
     return (
         <div className='flex flex-col space-y-5 m-9'>
             <h3 className='text-2xl font-bold pl-5'>All Users : {users.length} </h3>
@@ -34,8 +35,7 @@ const AllUsers = () => {
 
                                     <td className='uppercase text-slate-400 text-xl font-bold'> {user.name} </td>
                                     <td className='text-slate-400 text-2xl font-bold'>{user.email}</td>
-
-                                    <td className='uppercase text-slate-400 text-2xl font-bold'> {user.user_role === 'admin' ? '' : <button onClick={handleAdmin} className="btn btn-success text-xl text-white h-16">Make Admin</button>} </td>
+                     <td className='uppercase text-slate-400 text-2xl font-bold'> {user.user_role === 'admin' ? '' : <button onClick={handleAdmin} className="btn btn-success text-xl text-white h-16">Make Admin</button>} </td>
                                     <td className='uppercase text-slate-400 text-2xl font-bold'><button className="btn btn-success text-xl text-white h-16">Remove User</button></td>
 
                                     <td className='uppercase text-slate-400 text-xl font-bold'> {user.user_role === 'admin' ? '' : <button className="btn btn-success text-xl text-white h-16">Make Admin</button>} </td>
