@@ -31,6 +31,7 @@ import MyAppointments from './Components/dashboard/myappointments/MyAppointments
 import MyReviews from './Components/dashboard/myreviews/MyReviews.jsx';
 import MyHistory from './Components/dashboard/myhistory/MyHistory.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
+import About from './Components/about/About.jsx';
 
 
 
@@ -101,9 +102,11 @@ const router = createBrowserRouter([
         path: "myhistory",
         element: <MyHistory />
       },
-
-
     ],
+  },
+  {
+    path:'about',
+    element: <About></About>
   }
 ]);
 
