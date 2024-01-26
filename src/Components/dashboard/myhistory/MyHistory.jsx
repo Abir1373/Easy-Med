@@ -1,6 +1,7 @@
 import React from 'react';
 
-const MyHistory = () => {
+const MyHistory = async () => {
+
     return (
         <div>
             My History
