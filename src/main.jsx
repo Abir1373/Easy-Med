@@ -32,6 +32,7 @@ import MyReviews from './Components/dashboard/myreviews/MyReviews.jsx';
 import MyHistory from './Components/dashboard/myhistory/MyHistory.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
 import About from './Components/about/About.jsx';
+import ShowDoctors from './Components/Appointment/ShowDoctors.jsx';
 
 
 
@@ -68,6 +69,14 @@ const router = createBrowserRouter([
         path: "*",
         element: <ErrorPage />
       },
+      {
+        path: "/services/:speciality",
+        element: <ShowDoctors />,
+        loader: async ({ params }) => {
+          const res = fetch(`http://localhost:5000/doctors/${params.speciality}`)
+          return (await res).json();
+        }
+      }
     ],
   },
   {
@@ -105,7 +114,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path:'about',
+    path: 'about',
     element: <About></About>
   }
 ]);

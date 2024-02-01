@@ -1,10 +1,13 @@
 import { NavLink } from 'react-router-dom'
 export default function DoctorsCard({ doctors }) {
+
+    // const { image_link, doctor_name, speciality, email } = doctors
+
     return (
         <div>
-            <div className="card w-fit bg-base-100 shadow-xl">
+            <div className="card w-full bg-base-100 shadow-xl">
                 <figure className="px-4 pt-10">
-                    <img src="https://i.ibb.co/YB9Mgc6/Expert-1.png" alt="Shoes" className="rounded-xl" />
+                    <img src={`https://i.ibb.co/YB9Mgc6/Expert-1.png`} alt="Shoes" className="rounded-xl" />
                 </figure>
                 <div className="card-body items-center text-center">
                     <h2 className="card-title">Karyen Anderson</h2>
