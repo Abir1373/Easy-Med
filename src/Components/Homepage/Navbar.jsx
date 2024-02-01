@@ -14,15 +14,7 @@ export default function Navbar() {
     }
     const Navmenu = <>
         <li><NavLink to={"/"}>Home</NavLink></li>
-        <li>
-            <details>
-                <summary>About</summary>
-                <ul className="p-2 text-gray-500">
-                    <li><a>Submenu 1</a></li>
-                    <li><a>Submenu 2</a></li>
-                </ul>
-            </details>
-        </li>
+        <li><NavLink to={"/about"}>About</NavLink></li>
         <li><NavLink to={"/appointment"}>Appointment</NavLink></li>
     </>
     return (

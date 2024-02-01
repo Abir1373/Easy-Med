@@ -2,7 +2,7 @@ import React from 'react';
 
 const OverlyImage = () => {
     const styleImage = {
-        backgroundImage: `url(https://i.ibb.co/Btzm9wd/9824642.jpg)`,
+        backgroundImage: `url(https://i.ibb.co/82zQx21/8673411.jpg)`,
         backgroundSize: 'cover',
         width: 'full', // Replace with your desired width
         height: '600px', // Replace with your desired height

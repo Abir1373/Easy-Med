@@ -1,11 +1,24 @@
 import React from 'react';
 import getDoctors from '../../../api/getDoctors';
 import { BsTrash3Fill } from "react-icons/bs";
+import { FaUser } from "react-icons/fa";
+import axios from 'axios';
 
 const ManageDoctors = () => {
     const [doctors, refetch] = getDoctors();
+    
     if (!doctors) {
         <span className="loading loading-spinner text-secondary items-center justify-center"></span>
+    }
+    const removeDoctor = async (doctor) => {
+        console.log(doctor._id)
+        try {
+            const response = await axios.delete(`http://localhost:5000/doctors?_id=${doctor._id}`);
+            console.log(`Deleted User: ${doctor.doctor_name}`, response.data);
+            refetch()
+        } catch (error) {
+            console.error('Error deleting user:', error);
+        }
     }
     return (
         <div className='flex flex-col space-y-5'>
@@ -31,14 +44,24 @@ const ManageDoctors = () => {
                                     <td>
                                         <div className="avatar placeholder">
                                             <div className="bg-neutral text-center text-neutral-content rounded-full w-22 h-32 mt-2">
-                                                <img src={doctor.image_link} alt="" />
+                                                {
+                                                    doctor.image_link ? <img src={doctor.image_link} alt="" /> : <FaUser className='text-7xl'/>
+
+                                                }
                                             </div>
                                         </div>
                                     </td>
+<<<<<<< HEAD
+                                    <td className='uppercase text-2xl font-bold text-center text-slate-400'>{doctor.doctor_name}</td>
+                                    <td className='uppercase text-2xl font-bold text-center text-slate-400'>{doctor.speciality}</td>
+                                    <td className='uppercase text-2xl font-bold text-center text-slate-400'><button className="btn">
+                                        <span className='text-4xl text-rose-900' onClick={()=>removeDoctor(doctor)}><BsTrash3Fill/></span>    
+=======
                                     <td className='uppercase text-xl font-bold text-center text-slate-400'>{doctor.doctor_name}</td>
                                     <td className='uppercase text-xl font-bold text-center text-slate-400'>{doctor.speciality}</td>
                                     <td className='uppercase text-xl font-bold text-center text-slate-400'><button className="btn">
                                         <span className='text-4xl text-rose-900'><BsTrash3Fill /></span>
+>>>>>>> 9c1d6708331258a7921c62d30d89e45807e904ca
                                     </button></td>
                                 </tr>
                             ))
