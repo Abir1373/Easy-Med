@@ -1,5 +1,6 @@
 import React from 'react';
 import getUsers from '../../../api/getUsers';
+import axios from 'axios';
 
 const AllUsers = () => {
     let [users, refetch] = getUsers()
@@ -7,14 +8,31 @@ const AllUsers = () => {
         <span className="loading loading-spinner text-secondary items-center justify-center"></span>
     }
 
-    const handleAdmin = () => {
-        console.log('handleAdmin')
+    const handleAdmin = async (user) => {
+        console.log(user.name)
+        let url = `http://localhost:5000/users?email=${user.email}`
+        let updatedData = { user_role: 'admin' }
+        try {
+            const response = await axios.patch(url, updatedData);
+            console.log('User role updated successfully:', response.data);
+            refetch()
+        } catch (error) {
+            console.error('Error updating user role:', error);
+        }
     }
 
-    const handleRemoveUser = () => {
-        console.log('remove user')
-    }
+    const handleRemoveUser = async (user) => {
+        console.log(user.name);
+        try {
+            const response = await axios.delete(`http://localhost:5000/users?email=${user.email}`);
+            console.log(`Deleted User: ${user.name}`, response.data);
+            refetch()
+        } catch (error) {
+            console.error('Error deleting user:', error);
+        }
+    };
     
+
     return (
         <div className='flex flex-col space-y-5 m-9'>
             <h3 className='text-4xl font-bold pl-5'>All Users : {users.length} </h3>
@@ -36,8 +54,12 @@ const AllUsers = () => {
 
                                     <td className='uppercase text-slate-400 text-2xl font-bold'> {user.name} </td>
                                     <td className='text-slate-400 text-2xl font-bold'>{user.email}</td>
-                                    <td className='uppercase text-slate-400 text-2xl font-bold'> {user.user_role === 'admin' ? '' : <button onClick={handleAdmin} className="btn btn-success text-xl text-white h-16">Make Admin</button>} </td>
-                                    <td className='uppercase text-slate-400 text-2xl font-bold'><button className="btn btn-success text-xl text-white h-16">Remove User</button></td>
+                                    <td className='uppercase text-slate-400 text-2xl font-bold'> {user.user_role === 'admin' ? '' :
+                                        <button onClick={() => handleAdmin(user)} className="btn btn-success text-xl text-white h-16">Make Admin</button>}
+                                    </td>
+                                    <td className='uppercase text-slate-400 text-2xl font-bold'>
+                                        <button onClick={()=>handleRemoveUser(user)} className="btn btn-success text-xl text-white h-16">Remove User</button>
+                                    </td>
                                 </tr>
                             ))
                         }
