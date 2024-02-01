@@ -1,6 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
+import useAxiosSecure from '../Components/Hooks/useAxiosSecure';
 const getDoctors = () => {
     const user = "abir"
+    const [axiosSecure] = useAxiosSecure()
+    const token = localStorage.getItem('access-token');
     const { refetch, data: doctors = [] } = useQuery({
         queryKey: ['doctors', user?.email],
         queryFn: async () => {

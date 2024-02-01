@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import app from '../firebase/firebase.config';
+import axios from 'axios';
 
 export const AuthContext = createContext();
 
@@ -40,11 +41,15 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             setLoading(false)
             console.log('Current User ', currentUser);
-            if(currentUser){
+            if (currentUser) {
                 setUser(currentUser)
+                axios.post("http://localhost:5000/jwt", { email: currentUser.email }).then(data => {
+                    localStorage.setItem('access-token', data.data.token)
+                })
             }
-            else{
+            else {
                 console.log('no user')
+                localStorage.removeItem('access-token')
             }
 
         })
