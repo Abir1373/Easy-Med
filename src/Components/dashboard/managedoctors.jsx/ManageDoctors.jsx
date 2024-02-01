@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const ManageDoctors = () => {
     const [doctors, refetch] = getDoctors();
-    
+
     if (!doctors) {
         <span className="loading loading-spinner text-secondary items-center justify-center"></span>
     }
@@ -45,7 +45,7 @@ const ManageDoctors = () => {
                                         <div className="avatar placeholder">
                                             <div className="bg-neutral text-center text-neutral-content rounded-full w-22 h-32 mt-2">
                                                 {
-                                                    doctor.image_link ? <img src={doctor.image_link} alt="" /> : <FaUser className='text-7xl'/>
+                                                    doctor.image_link ? <img src={doctor.image_link} alt="" /> : <FaUser className='text-7xl' />
 
                                                 }
                                             </div>

@@ -1,6 +1,10 @@
+import getDoctors from "../../../api/getDoctors";
 import DoctorsCard from "./DoctorsCard";
 
 export default function ExpertDoctors() {
+    const [doctors, refetch] = getDoctors()
+    console.log(doctors)
+    const cardData = doctors.slice(3)
     return (
         <div className="my-8">
             <div className="text-center space-y-5">

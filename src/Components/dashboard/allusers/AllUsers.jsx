@@ -58,7 +58,7 @@ const AllUsers = () => {
                                         <button onClick={() => handleAdmin(user)} className="btn btn-success text-xl text-white h-16">Make Admin</button>}
                                     </td>
                                     <td className='uppercase text-slate-400 text-2xl font-bold'>
-                                        <button onClick={()=>handleRemoveUser(user)} className="btn btn-success text-xl text-white h-16">Remove User</button>
+                                        <button onClick={() => handleRemoveUser(user)} className="btn btn-success text-xl text-white h-16">Remove User</button>
                                     </td>
                                 </tr>
                             ))
