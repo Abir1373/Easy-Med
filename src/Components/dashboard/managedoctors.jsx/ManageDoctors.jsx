@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const ManageDoctors = () => {
     const [doctors, refetch] = getDoctors();
-    
+
     if (!doctors) {
         <span className="loading loading-spinner text-secondary items-center justify-center"></span>
     }
@@ -45,23 +45,16 @@ const ManageDoctors = () => {
                                         <div className="avatar placeholder">
                                             <div className="bg-neutral text-center text-neutral-content rounded-full w-22 h-32 mt-2">
                                                 {
-                                                    doctor.image_link ? <img src={doctor.image_link} alt="" /> : <FaUser className='text-7xl'/>
+                                                    doctor.image_link ? <img src={doctor.image_link} alt="" /> : <FaUser className='text-7xl' />
 
                                                 }
                                             </div>
                                         </div>
                                     </td>
-<<<<<<< HEAD
                                     <td className='uppercase text-2xl font-bold text-center text-slate-400'>{doctor.doctor_name}</td>
                                     <td className='uppercase text-2xl font-bold text-center text-slate-400'>{doctor.speciality}</td>
                                     <td className='uppercase text-2xl font-bold text-center text-slate-400'><button className="btn">
-                                        <span className='text-4xl text-rose-900' onClick={()=>removeDoctor(doctor)}><BsTrash3Fill/></span>    
-=======
-                                    <td className='uppercase text-xl font-bold text-center text-slate-400'>{doctor.doctor_name}</td>
-                                    <td className='uppercase text-xl font-bold text-center text-slate-400'>{doctor.speciality}</td>
-                                    <td className='uppercase text-xl font-bold text-center text-slate-400'><button className="btn">
-                                        <span className='text-4xl text-rose-900'><BsTrash3Fill /></span>
->>>>>>> 9c1d6708331258a7921c62d30d89e45807e904ca
+                                        <span className='text-4xl text-rose-900' onClick={() => removeDoctor(doctor)}><BsTrash3Fill /></span>
                                     </button></td>
                                 </tr>
                             ))

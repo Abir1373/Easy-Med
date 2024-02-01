@@ -7,7 +7,6 @@ const AllUsers = () => {
     if (!users) {
         <span className="loading loading-spinner text-secondary items-center justify-center"></span>
     }
-<<<<<<< HEAD
 
     const handleAdmin = async (user) => {
         console.log(user.name)
@@ -32,16 +31,7 @@ const AllUsers = () => {
             console.error('Error deleting user:', error);
         }
     };
-    
-=======
-    const handleAdmin = () => {
-        console.log('handleAdmin')
-    }
 
-    const handleRemoveUser = () => {
-        console.log('remove user')
-    }
->>>>>>> 9c1d6708331258a7921c62d30d89e45807e904ca
 
     return (
         <div className='flex flex-col space-y-5 m-9'>
@@ -64,20 +54,12 @@ const AllUsers = () => {
 
                                     <td className='uppercase text-slate-400 text-xl font-bold'> {user.name} </td>
                                     <td className='text-slate-400 text-2xl font-bold'>{user.email}</td>
-<<<<<<< HEAD
                                     <td className='uppercase text-slate-400 text-2xl font-bold'> {user.user_role === 'admin' ? '' :
                                         <button onClick={() => handleAdmin(user)} className="btn btn-success text-xl text-white h-16">Make Admin</button>}
                                     </td>
                                     <td className='uppercase text-slate-400 text-2xl font-bold'>
-                                        <button onClick={()=>handleRemoveUser(user)} className="btn btn-success text-xl text-white h-16">Remove User</button>
+                                        <button onClick={() => handleRemoveUser(user)} className="btn btn-success text-xl text-white h-16">Remove User</button>
                                     </td>
-=======
-                     <td className='uppercase text-slate-400 text-2xl font-bold'> {user.user_role === 'admin' ? '' : <button onClick={handleAdmin} className="btn btn-success text-xl text-white h-16">Make Admin</button>} </td>
-                                    <td className='uppercase text-slate-400 text-2xl font-bold'><button className="btn btn-success text-xl text-white h-16">Remove User</button></td>
-
-                                    <td className='uppercase text-slate-400 text-xl font-bold'> {user.user_role === 'admin' ? '' : <button className="btn btn-success text-xl text-white h-16">Make Admin</button>} </td>
-                                    <td className='uppercase text-slate-400 text-xl font-bold'><button className="btn btn-success text-xl text-white h-16">Remove User</button></td>
->>>>>>> 9c1d6708331258a7921c62d30d89e45807e904ca
                                 </tr>
                             ))
                         }
