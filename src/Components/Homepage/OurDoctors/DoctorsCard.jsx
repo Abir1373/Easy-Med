@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-export default function DoctorsCard() {
+export default function DoctorsCard({ doctors }) {
     return (
         <div>
             <div className="card w-fit bg-base-100 shadow-xl">

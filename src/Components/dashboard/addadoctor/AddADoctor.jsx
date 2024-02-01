@@ -4,7 +4,7 @@ import { LuImagePlus } from "react-icons/lu";
 
 const AddADoctor = () => {
     return (
-        <div className='h-3/5 w-2/5'>
+        <div className='h-3/5'>
             <div className='text-4xl pl-9 pt-6 ml-5 font-bold'>Add a New Doctor</div>
             <form className='flex  flex-col text-2xl m-14 space-y-5'>
 
@@ -62,14 +62,14 @@ const AddADoctor = () => {
 
                 <div className='h-40 mt-5 border rounded-lg border-4 border-dashed border-slate-300 border-opacity-50 flex flex-col items-center justify-center space-y-5'>
                     <h2 className='text-3xl text-slate-300'>Upload A Photo</h2>
-                   <div className='text-5xl text-slate-300'>  <LuImagePlus /> </div>
+                    <div className='text-5xl text-slate-300'>  <LuImagePlus /> </div>
 
                 </div>
 
 
                 {/* input submit button */}
 
-                <input type="submit" value="Add" className='text-xl h-16 w-full border border-2 bg-green-900 text-white'  />
+                <input type="submit" value="Add" className='text-xl h-16 w-full border border-2 bg-green-900 text-white' />
 
 
 
