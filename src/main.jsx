@@ -33,6 +33,7 @@ import MyHistory from './Components/dashboard/myhistory/MyHistory.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
 import About from './Components/about/About.jsx';
 import ShowDoctors from './Components/Appointment/ShowDoctors.jsx';
+import Doctorpage from './Components/Doctors/Doctorpage.jsx';
 
 
 
@@ -68,6 +69,14 @@ const router = createBrowserRouter([
       {
         path: "*",
         element: <ErrorPage />
+      },
+      {
+        path: '/about',
+        element: <About></About>
+      },
+      {
+        path: "/doctors",
+        element: <Doctorpage />
       },
       {
         path: "/services/:speciality",
@@ -111,11 +120,7 @@ const router = createBrowserRouter([
         path: "myhistory",
         element: <MyHistory />
       },
-    ],
-  },
-  {
-    path: 'about',
-    element: <About></About>
+    ]
   }
 ]);
 

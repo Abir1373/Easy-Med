@@ -35,8 +35,8 @@ export default function Registration() {
             .catch(err => {
                 console.log(err);
             })
-            navigate('/')
-            
+        navigate('/')
+
     }
 
 
@@ -51,7 +51,7 @@ export default function Registration() {
                 <form className="max-w-sm mx-auto" onSubmit={handleReg}>
 
                     <div className="mb-5">
-                        <label htmlFor="email" className="font-bold block mb-2 text-sm font-medium text-xl">
+                        <label htmlFor="email" className="font-medium block mb-2 text-xl ">
                             Name
                         </label>
                         <input
@@ -59,13 +59,13 @@ export default function Registration() {
                             type="text"
                             id="name"
                             placeholder="Enter your name"
-                            className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             required
                         />
                     </div>
 
                     <div className="mb-5">
-                        <label htmlFor="email" className="font-bold block mb-2 text-sm font-medium text-xl">
+                        <label htmlFor="email" className="block mb-2 font-medium text-xl">
                             User Name
                         </label>
                         <input
@@ -73,13 +73,13 @@ export default function Registration() {
                             type="text"
                             id="username"
                             placeholder="Enter your username"
-                            className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             required
                         />
                     </div>
 
                     <div className="mb-5">
-                        <label htmlFor="email" className="font-bold block mb-2 text-sm font-medium text-xl">
+                        <label htmlFor="email" className="block mb-2 font-medium text-xl">
                             Email Address
                         </label>
                         <input
@@ -87,12 +87,12 @@ export default function Registration() {
                             type="email"
                             id="email"
                             placeholder="Enter your email"
-                            className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             required
                         />
                     </div>
                     <div className="mb-5">
-                        <label htmlFor="password" className="block mb-2 text-sm font-medium text-xl font-bold">
+                        <label htmlFor="password" className="block mb-2  font-medium text-xl ">
                             Your password
                         </label>
                         <input
@@ -100,7 +100,7 @@ export default function Registration() {
                             type="password"
                             id="password"
                             placeholder="Enter your password"
-                            className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             required
                         />
                     </div>
