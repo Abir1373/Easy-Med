@@ -32,7 +32,7 @@ const AllUsers = () => {
             console.error('Error deleting user:', error);
         }
     };
-
+    
 
     return (
         <div className='flex flex-col space-y-5 m-9'>

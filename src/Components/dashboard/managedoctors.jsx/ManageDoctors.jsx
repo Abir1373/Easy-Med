@@ -53,7 +53,7 @@ const ManageDoctors = () => {
                                     <td className='uppercase text-2xl font-bold text-center text-slate-400'>{doctor.doctor_name}</td>
                                     <td className='uppercase text-2xl font-bold text-center text-slate-400'>{doctor.speciality}</td>
                                     <td className='uppercase text-2xl font-bold text-center text-slate-400'><button className="btn">
-                                        <span className='text-4xl text-rose-900' onClick={() => removeDoctor(doctor)}><BsTrash3Fill /></span>
+                                        <span className='text-4xl text-rose-900' onClick={()=>removeDoctor(doctor)}><BsTrash3Fill/></span>    
                                     </button></td>
                                 </tr>
                             ))
