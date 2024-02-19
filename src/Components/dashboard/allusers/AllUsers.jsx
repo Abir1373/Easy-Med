@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const AllUsers = () => {
     let [users, refetch] = getUsers()
+    console.log(users)
     if (!users) {
         <span className="loading loading-spinner text-secondary items-center justify-center"></span>
     }
