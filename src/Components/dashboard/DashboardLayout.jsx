@@ -1,18 +1,32 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import getSingleUser from '../../api/getSingleUser';
 import { IoMdMenu } from "react-icons/io";
+import { AuthContext } from '../../providers/AuthProvider';
+import axios from 'axios';
 
 const DashboardLayout = ({ children }) => {
+
+
     const [clicked, setClicked] = useState(1);
     const [userClicked, setUserClicked] = useState(1);
+    const [userrole, setUserrole] = useState('')
 
-    let [singleUserData] = getSingleUser()
-    if (!singleUserData || singleUserData.length === 0) {
-        return <span className="loading loading-spinner text-error"></span>
-    }
-    let userrole = singleUserData[0].user_role
-    console.log(singleUserData)
+    const { user } = useContext(AuthContext)
+
+    useEffect(() => {
+        const fetchUserInfo = async () => {
+            const res = await axios.get(`http://localhost:5000/users?email=${user.email}`)
+            console.log(res.data[0])
+            setUserrole(res.data[0].user_role)
+            console.log(userrole)
+        }
+        if (user) {
+            fetchUserInfo()
+        }
+    }, [user])
+
+
+    console.log(userrole)
     const navmenu = <>
         <ul className="menu menu-horizontal px-1 text-black">
             <li><Link to={``}>Home</Link></li>
@@ -23,7 +37,7 @@ const DashboardLayout = ({ children }) => {
             {/* <li><button className="btn text-center bg-[#F7A582] text-white ">logout</button></li> */}
         </ul>
     </>
-    return (
+    if (userrole != "") return (
         <div>
             {/* navbar */}
 
@@ -82,6 +96,17 @@ const DashboardLayout = ({ children }) => {
                             <li onClick={() => setUserClicked(1)}><Link to='/dboard/myappointments'> <span className={`text-xl font-bold m-5 ${userClicked === 1 ? 'text-black' : 'text-slate-500'}`}> My Appointments </span> </Link></li>
                             <li onClick={() => setUserClicked(2)}><Link to='/dboard/myreviews'> <span className={`text-xl font-bold m-5 ${userClicked === 2 ? 'text-black' : 'text-slate-500'}`}> My Reviews </span> </Link></li>
                             <li onClick={() => setUserClicked(3)}><Link to='/dboard/myhistory'> <span className={`text-xl font-bold m-5 ${userClicked === 3 ? 'text-black' : 'text-slate-500'}`}> My History </span> </Link></li>
+                            <li><Link to='/'> <span className='text-xl font-bold text-slate-500 m-5'> Home </span></Link></li>
+                        </ul>
+                    }
+                    {/* list only for doctor */}
+                    {
+                        (userrole === 'doctor') &&
+                        <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+                            {/* Sidebar content here */}
+                            <li onClick={() => setUserClicked(1)}><Link to=''> <span className={`text-xl font-bold m-5 ${userClicked === 1 ? 'text-black' : 'text-slate-500'}`}> My Appointments </span> </Link></li>
+                            <li onClick={() => setUserClicked(2)}><Link to=''> <span className={`text-xl font-bold m-5 ${userClicked === 2 ? 'text-black' : 'text-slate-500'}`}> Payment History </span> </Link></li>
+                            <li onClick={() => setUserClicked(3)}><Link to=''> <span className={`text-xl font-bold m-5 ${userClicked === 3 ? 'text-black' : 'text-slate-500'}`}> Patient/s History </span> </Link></li>
                             <li><Link to='/'> <span className='text-xl font-bold text-slate-500 m-5'> Home </span></Link></li>
                         </ul>
                     }

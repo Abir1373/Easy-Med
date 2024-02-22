@@ -19,7 +19,6 @@ import MainLayout from './Layouts/MainLayout.jsx';
 import App from './App.jsx';
 import DoctorProfile from './Components/DoctorsPage/DoctorProfile.jsx';
 import ChooseService from './Components/Appointment/ChooseService.jsx';
-import Registration from './Components/Registration.jsx';
 import Login from './Components/Login.jsx';
 import ErrorPage from './Components/ErrorPage.jsx';
 import DbMain from './Components/dashboard/dbmain/DbMain.jsx';
@@ -33,8 +32,7 @@ import MyHistory from './Components/dashboard/myhistory/MyHistory.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
 import About from './Components/about/About.jsx';
 import ShowDoctors from './Components/Appointment/ShowDoctors.jsx';
-import Doctorpage from './Components/Doctors/Doctorpage.jsx';
-import MakeAppointment from './Components/Appointment/MakeAppointment.jsx';
+import Registration from './Components/registration/Registration.jsx';
 
 
 
@@ -54,10 +52,6 @@ const router = createBrowserRouter([
       {
         path: "/appointment",
         element: <ChooseService />
-      },
-      {
-        path: "/registration",
-        element: <Registration />
       },
       {
         path: "/login",
