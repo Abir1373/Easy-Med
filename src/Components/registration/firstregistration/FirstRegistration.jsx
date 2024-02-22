@@ -1,11 +1,11 @@
-import sideimg from '../assets/Regpage_vector.svg'
-import art from '../assets/Group.svg'
+import sideimg from '../../../assets/Regpage_vector.svg'
+import art from '../../../assets/Group.svg'
 import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
-import { AuthContext } from '../providers/AuthProvider'
+import { AuthContext } from '../../../providers/AuthProvider'
 import axios from 'axios';
 
-export default function Registration() {
+export default function FirstRegistration() {
     const { createUser } = useContext(AuthContext)
     const navigate = useNavigate()
     const handleReg = e => {
