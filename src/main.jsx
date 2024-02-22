@@ -34,6 +34,7 @@ import AuthProvider from './providers/AuthProvider.jsx';
 import About from './Components/about/About.jsx';
 import ShowDoctors from './Components/Appointment/ShowDoctors.jsx';
 import Doctorpage from './Components/Doctors/Doctorpage.jsx';
+import MakeAppointment from './Components/Appointment/MakeAppointment.jsx';
 
 
 
@@ -65,6 +66,14 @@ const router = createBrowserRouter([
       {
         path: "/doctors/:id",
         element: <DoctorProfile />
+      },
+      {
+        path: "appointment/:id",
+        element: <MakeAppointment />,
+        loader: async ({ params }) => {
+          const res = fetch(`http://localhost:5000/doctors?_id=${params.id}`)
+          return (await res).json();
+        }
       },
       {
         path: "*",
