@@ -6,7 +6,6 @@ import axios from 'axios';
 
 const ManageDoctors = () => {
     const [doctors, refetch] = getDoctors();
-
     if (!doctors) {
         <span className="loading loading-spinner text-secondary items-center justify-center"></span>
     }

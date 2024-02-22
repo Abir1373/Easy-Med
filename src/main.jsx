@@ -66,8 +66,24 @@ const router = createBrowserRouter([
         element: <DoctorProfile />
       },
       {
+        path: "appointment/:id",
+        element: <MakeAppointment />,
+        loader: async ({ params }) => {
+          const res = fetch(`http://localhost:5000/doctors?_id=${params.id}`)
+          return (await res).json();
+        }
+      },
+      {
         path: "*",
         element: <ErrorPage />
+      },
+      {
+        path: '/about',
+        element: <About></About>
+      },
+      {
+        path: "/doctors",
+        element: <Doctorpage />
       },
       {
         path: "/services/:speciality",
@@ -111,11 +127,7 @@ const router = createBrowserRouter([
         path: "myhistory",
         element: <MyHistory />
       },
-    ],
-  },
-  {
-    path: 'about',
-    element: <About></About>
+    ]
   }
 ]);
 

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import image from '../../assets/Navicon.svg'
 export default function Footer() {
     return (
@@ -8,9 +9,9 @@ export default function Footer() {
             </aside>
             <nav>
                 <header className="footer-title">Quick Links</header>
-                <a className="link link-hover">About us</a>
-                <a className="link link-hover">Service</a>
-                <a className="link link-hover">Doctors</a>
+                <Link to={`/about`} className="link link-hover">About us</Link>
+                <Link to={`/appointment`} className="link link-hover">Service</Link>
+                <Link to={`/doctors`} className="link link-hover">Doctors</Link>
                 <a className="link link-hover">Departments</a>
                 <a className="link link-hover">Online Payments</a>
                 <a className="link link-hover">Contact us</a>
