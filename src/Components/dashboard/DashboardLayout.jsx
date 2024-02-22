@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import getSingleUser from '../../api/getSingleUser';
 import { IoMdMenu } from "react-icons/io";
 import { AuthContext } from '../../providers/AuthProvider';
 import axios from 'axios';
 
 const DashboardLayout = ({ children }) => {
+
+
     const [clicked, setClicked] = useState(1);
     const [userClicked, setUserClicked] = useState(1);
-    const [userrole,setUserrole] = useState('') 
+    const [userrole, setUserrole] = useState('')
 
     const { user } = useContext(AuthContext)
 
@@ -19,7 +20,7 @@ const DashboardLayout = ({ children }) => {
             setUserrole(res.data[0].user_role)
             console.log(userrole)
         }
-        if(user){
+        if (user) {
             fetchUserInfo()
         }
     }, [user])
@@ -36,7 +37,7 @@ const DashboardLayout = ({ children }) => {
             {/* <li><button className="btn text-center bg-[#F7A582] text-white ">logout</button></li> */}
         </ul>
     </>
-    if(userrole != "")return (
+    if (userrole != "") return (
         <div>
             {/* navbar */}
 
@@ -98,7 +99,7 @@ const DashboardLayout = ({ children }) => {
                             <li><Link to='/'> <span className='text-xl font-bold text-slate-500 m-5'> Home </span></Link></li>
                         </ul>
                     }
-                        {/* list only for doctor */}
+                    {/* list only for doctor */}
                     {
                         (userrole === 'doctor') &&
                         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
