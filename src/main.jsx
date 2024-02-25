@@ -38,6 +38,8 @@ import SecondRegistration from './Components/registration/secondregistration/Sec
 import DoctorAppointment from './Components/dashboard/doctorappointment/DoctorAppointment.jsx';
 import DoctorPaymentHistory from './Components/dashboard/doctorPaymentHistory/DoctorPaymentHistory.jsx';
 import DoctorSchedule from './Components/dashboard/doctorschedule/DoctorSchedule.jsx';
+import Doctorpage from './Components/Doctors/Doctorpage.jsx';
+import MakeAppointment from './Components/Appointment/MakeAppointment.jsx';
 
 
 
@@ -65,6 +67,18 @@ const router = createBrowserRouter([
       {
         path: "/doctors/:id",
         element: <DoctorProfile />
+      },
+      {
+        path: "/appointment/:id",
+        element: <MakeAppointment />,
+        loader: async ({ params }) => {
+          const res = fetch(`http://localhost:5000/doctors?_id=${params.id}`)
+          return (await res).json();
+        }
+      },
+      {
+        path: "/doctors",
+        element: <Doctorpage />
       },
       {
         path: "*",
@@ -114,15 +128,15 @@ const router = createBrowserRouter([
       },
       {
         path: "doctorappointment",
-        element: <DoctorAppointment/>
+        element: <DoctorAppointment />
       },
       {
         path: "doctorpaymenthistory",
-        element: <DoctorPaymentHistory/>
+        element: <DoctorPaymentHistory />
       },
       {
         path: "doctorschedule",
-        element: <DoctorSchedule/>
+        element: <DoctorSchedule />
       },
     ],
   },
@@ -132,15 +146,15 @@ const router = createBrowserRouter([
   },
   {
     path: '/registration',
-    element: <RegistrationLayout/>,
+    element: <RegistrationLayout />,
     children: [
       {
         path: "firstregistration",
-        element: <FirstRegistration/>
+        element: <FirstRegistration />
       },
       {
         path: "secondregistration",
-        element: <SecondRegistration/>
+        element: <SecondRegistration />
       },
     ],
   },
