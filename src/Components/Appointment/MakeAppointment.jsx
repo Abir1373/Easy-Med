@@ -11,6 +11,16 @@ export default function MakeAppointment() {
         handleSubmit, } = useForm()
     const onSubmit = (data) => {
         console.log(data)
+        const info = {
+            doctor_name: data.doctorName,
+            doctor_email: data.email,
+            fees: data.fees,
+            doctors_id: doctorinfo[0]._id,
+            phone: data.phone,
+            prefered_time: data.time,
+            user_email: user.email
+        }
+        console.log(info)
     }
 
     return (
@@ -35,7 +45,7 @@ export default function MakeAppointment() {
                         <input type="text" placeholder="prefered time" className="input input-bordered w-full bg-[#ffffff33]" {...register("time")} {...register("time")} />
                         {errors.time && <p className="text-red-400 font-medium">required</p>}
                     </div>
-                    <input type="submit" value="Register" className="btn btn-block bg-[#F7A582] text-white rounded-md border-none" />
+                    <input type="submit" value="Take appointment" className="btn btn-block bg-[#F7A582] text-white rounded-md border-none" />
 
                 </div>
             </form>

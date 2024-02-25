@@ -32,7 +32,12 @@ import MyHistory from './Components/dashboard/myhistory/MyHistory.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
 import About from './Components/about/About.jsx';
 import ShowDoctors from './Components/Appointment/ShowDoctors.jsx';
-import Registration from './Components/registration/Registration.jsx';
+import RegistrationLayout from './Components/registration/RegistrationLayout.jsx';
+import FirstRegistration from './Components/registration/firstregistration/FirstRegistration.jsx';
+import SecondRegistration from './Components/registration/secondregistration/SecondRegistration.jsx';
+import DoctorAppointment from './Components/dashboard/doctorappointment/DoctorAppointment.jsx';
+import DoctorPaymentHistory from './Components/dashboard/doctorPaymentHistory/DoctorPaymentHistory.jsx';
+import DoctorSchedule from './Components/dashboard/doctorschedule/DoctorSchedule.jsx';
 
 
 
@@ -62,24 +67,8 @@ const router = createBrowserRouter([
         element: <DoctorProfile />
       },
       {
-        path: "appointment/:id",
-        element: <MakeAppointment />,
-        loader: async ({ params }) => {
-          const res = fetch(`http://localhost:5000/doctors?_id=${params.id}`)
-          return (await res).json();
-        }
-      },
-      {
         path: "*",
         element: <ErrorPage />
-      },
-      {
-        path: '/about',
-        element: <About></About>
-      },
-      {
-        path: "/doctors",
-        element: <Doctorpage />
       },
       {
         path: "/services/:speciality",
@@ -123,8 +112,38 @@ const router = createBrowserRouter([
         path: "myhistory",
         element: <MyHistory />
       },
-    ]
-  }
+      {
+        path: "doctorappointment",
+        element: <DoctorAppointment/>
+      },
+      {
+        path: "doctorpaymenthistory",
+        element: <DoctorPaymentHistory/>
+      },
+      {
+        path: "doctorschedule",
+        element: <DoctorSchedule/>
+      },
+    ],
+  },
+  {
+    path: 'about',
+    element: <About></About>
+  },
+  {
+    path: '/registration',
+    element: <RegistrationLayout/>,
+    children: [
+      {
+        path: "firstregistration",
+        element: <FirstRegistration/>
+      },
+      {
+        path: "secondregistration",
+        element: <SecondRegistration/>
+      },
+    ],
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
