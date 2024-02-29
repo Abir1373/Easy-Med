@@ -5,6 +5,7 @@ import art from '../../../assets/Group.svg'
 import { Link, useNavigate } from 'react-router-dom'
 
 import axios from 'axios';
+import { useForm } from 'react-hook-form';
 
 export default function SecondRegistration() {
 
@@ -39,6 +40,34 @@ export default function SecondRegistration() {
     ]
 
     const navigate = useNavigate()
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm()
+    const onSubmit = (data) => {
+        console.log(data)
+        // console.log(data.name, data.email, data.password, data.speciality, data.designation, data.degree, data.fee, data.image_link)
+
+        const doctorInfo = {
+            'name': data.name,
+            'password': data.password,
+            'speciality': data.speciality,
+            'email': data.email,
+            'designation': data.designation,
+            'ratings': 0.0,
+            'fee': data.fee,
+            'degree': data.degree,
+            'image_link': data.image_link
+        }
+
+        // console.log(doctorInfo)
+
+        axios.post(`http://localhost:5000/doctor_request`, doctorInfo)
+            .then(res => console.log(res))
+            .catch(error => console.log(error))
+    }
     const handleReg = e => {
         e.preventDefault()
         const form = e.target
@@ -50,8 +79,8 @@ export default function SecondRegistration() {
         const fee = form.fee.value
         const degree = form.degree.value
         const image_link = form.imageLink.value
-        
-        console.log(name, email, password, speciality, designation, degree, fee , image_link)
+
+        console.log(name, email, password, speciality, designation, degree, fee, image_link)
 
         const doctorInfo = {
             'name': name,
@@ -67,9 +96,9 @@ export default function SecondRegistration() {
 
         // console.log(doctorInfo)
 
-        axios.post(`http://localhost:5000/doctor_request`,doctorInfo)
-            .then(res=>console.log(res))
-            .catch(error=>console.log(error))
+        axios.post(`http://localhost:5000/doctor_request`, doctorInfo)
+            .then(res => console.log(res))
+            .catch(error => console.log(error))
 
     }
 
@@ -82,7 +111,7 @@ export default function SecondRegistration() {
             </div>
             <div className='col-span-2 py-20'>
                 <h2 className="text-center font-bold text-3xl mb-5">Sign Up to Doc House</h2>
-                <form className="max-w-sm mx-auto" onSubmit={handleReg}>
+                <form className="max-w-sm mx-auto" onSubmit={handleSubmit(onSubmit)}>
 
                     <div className="mb-5">
                         <label htmlFor="name" className="font-bold block mb-2 text-sm font-medium text-xl">
@@ -93,9 +122,12 @@ export default function SecondRegistration() {
                             type="text"
                             id="name"
                             placeholder="Enter your name"
+                            {...register("name", { required: true, maxLength: 50, pattern: /[A-Za-z]{5,}/gm })}
                             className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            required
                         />
+                        {errors.name?.type === 'required' && <p className='font-bold text-xl text-red-600'>required</p>}
+                        {errors.name?.type === 'pattern' && <p className='font-bold text-xl text-red-600'>only characters allowed</p>}
+                        {errors.name?.type === 'maxLength' && <p className='font-bold text-xl text-red-600'>not more than 50 character</p>}
                     </div>
 
 
@@ -109,9 +141,10 @@ export default function SecondRegistration() {
                             type="email"
                             id="email"
                             placeholder="Enter your email"
+                            {...register("email", { required: true })}
                             className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            required
                         />
+                        {errors.email?.type === 'required' && <p className='font-bold text-xl text-red-600'>required</p>}
                     </div>
                     <div className="mb-5">
                         <label htmlFor="password" className="block mb-2 text-sm font-medium text-xl font-bold">
@@ -122,20 +155,22 @@ export default function SecondRegistration() {
                             type="password"
                             id="password"
                             placeholder="Enter your password"
+                            {...register("password", { required: true })}
                             className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            required
                         />
+                        {errors.password?.type === 'required' && <p className='font-bold text-xl text-red-600'>required</p>}
                     </div>
 
                     <div className="mb-5">
                         <label htmlFor="speciality" className="font-bold block mb-2 text-sm font-medium text-xl">
                             Speciality
                         </label>
-                        <select id="specialty" name='speciality' className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <select id="specialty" name='speciality' {...register("speciality", { required: true })} className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             {specialities.map((item, index) => (
                                 <option key={index}>{item}</option>
                             ))}
                         </select>
+                        {errors.speciality?.type === 'required' && <p className='font-bold text-xl text-red-600'>required</p>}
                     </div>
 
 
@@ -147,10 +182,11 @@ export default function SecondRegistration() {
                             name='imageLink'
                             type="text"
                             id="imageLink"
+                            {...register("imageLink", { required: true })}
                             placeholder="Enter your image link"
                             className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            required
                         />
+                        {errors.imageLink?.type === 'required' && <p className='font-bold text-xl text-red-600'>required</p>}
                     </div>
 
 
@@ -162,10 +198,12 @@ export default function SecondRegistration() {
                             name='designation'
                             type="text"
                             id="designation"
+                            {...register("designation", { required: true })}
                             placeholder="Enter your designation"
                             className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            required
+
                         />
+                        {errors.designation?.type === 'required' && <p className='font-bold text-xl text-red-600'>required</p>}
                     </div>
 
                     <div className="mb-5">
@@ -176,10 +214,12 @@ export default function SecondRegistration() {
                             name='degree'
                             type="text"
                             id="degree"
+                            {...register("degree", { required: true })}
                             placeholder="Enter your degree"
                             className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            required
+
                         />
+                        {errors.degree?.type === 'required' && <p className='font-bold text-xl text-red-600'>required</p>}
                     </div>
 
                     <div className="mb-5">
@@ -191,9 +231,11 @@ export default function SecondRegistration() {
                             type="number"
                             id="fee"
                             placeholder="Enter your fee"
+                            {...register("fee", { required: true })}
                             className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            required
+
                         />
+                        {errors.fee?.type === 'required' && <p className='font-bold text-xl text-red-600'>required</p>}
                     </div>
 
 
