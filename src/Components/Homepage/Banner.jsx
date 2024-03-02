@@ -6,7 +6,7 @@ export default function Banner() {
         <div className="bg-[#07332F] px-10 py-36 flex flex-col-reverse md:flex-row justify-evenly items-center">
             <div className="text-[#F3F3F3] space-y-5">
                 <h2 className="text-7xl font-bold leading-[95px]">Your Best Medical Help Center</h2>
-                <p>Lorem Ipsum is simply dummy text they are printing typesetting has been the industry’s stardard.</p>
+                <p>Always ready to serve you with the best care.</p>
                 <button className="bg-[#F7A582] px-8 py-4 rounded-md text-xl font-semibold" onClick={() => {
                     navigate(`/appointment`)
                 }}>All services</button>
