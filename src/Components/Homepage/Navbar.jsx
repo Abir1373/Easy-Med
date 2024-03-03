@@ -13,13 +13,14 @@ export default function Navbar() {
     const LOGOUT = () => {
         logOut()
     }
-    // const Navmenu = <>
-    //     <li><NavLink to={"/"}>Home</NavLink></li>
-    //     <li><NavLink to={"/about"}>About</NavLink></li>
-    //     <li><NavLink to={"/appointment"}>Appointment</NavLink></li>
-    //     <li><NavLink to={"/doctors"}>Doctors</NavLink></li>
-    //     <li><NavLink to={"/dboard"}>Dashboard</NavLink></li>
-    // </>
+
+    const Navmenu = <>
+        <li><NavLink to={"/"}>Home</NavLink></li>
+        <li><NavLink to={"/about"}>About</NavLink></li>
+        <li><NavLink to={"/appointment"}>Appointment</NavLink></li>
+        <li><NavLink to={"/doctors"}>Doctors</NavLink></li>
+        <li><NavLink to={"/dboard"}>Dashboard</NavLink></li>
+    </>
     return (
         <div className="navbar bg-[#07332F] fixed top-0 bg-opacity-40 z-20 text-white">
             <div className="navbar-start">
