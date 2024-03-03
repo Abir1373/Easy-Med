@@ -78,7 +78,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/doctors",
-        element: <Doctorpage />
+        element: <Doctorpage /> ,
+        loader: async () => {
+          const res = await axios.get(`http://localhost:5000/doctors?`)
+          console.log(res.data)
+          return res.data 
+        }
       },
       {
         path: "*",
