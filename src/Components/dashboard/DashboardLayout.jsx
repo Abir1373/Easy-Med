@@ -9,24 +9,29 @@ const DashboardLayout = ({ children }) => {
 
     const [clicked, setClicked] = useState(1);
     const [userClicked, setUserClicked] = useState(1);
-    const [userrole, setUserrole] = useState('')
-
+    const [userrole, setUserRole] = useState('')
+    const [loading , setLoading] = useState(true)
     const { user } = useContext(AuthContext)
 
+
+
+
     useEffect(() => {
-        const fetchUserInfo = async () => {
+        const singleUserFun = async () => {
             const res = await axios.get(`http://localhost:5000/users?email=${user.email}`)
-            console.log(res.data[0])
-            setUserrole(res.data[0].user_role)
-            console.log(userrole)
+            setUserRole(res.data[0].user_role)
+            // console.log(res)
+            setLoading(false)
         }
-        if (user) {
-            fetchUserInfo()
-        }
+        if(user)singleUserFun()
     }, [user])
 
+    if(loading || userrole===''){
+         <span>loading</span>
+    }
 
-    console.log(userrole)
+    // console.log(singleUser)
+
     const navmenu = <>
         <ul className="menu menu-horizontal px-1 text-black">
             <li><Link to={``}>Home</Link></li>
@@ -37,7 +42,10 @@ const DashboardLayout = ({ children }) => {
             {/* <li><button className="btn text-center bg-[#F7A582] text-white ">logout</button></li> */}
         </ul>
     </>
-    if (userrole != "") return (
+
+
+
+    return (
         <div>
             {/* navbar */}
 
@@ -104,9 +112,9 @@ const DashboardLayout = ({ children }) => {
                         (userrole === 'doctor') &&
                         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                             {/* Sidebar content here */}
-                            <li onClick={() => setUserClicked(1)}><Link to=''> <span className={`text-xl font-bold m-5 ${userClicked === 1 ? 'text-black' : 'text-slate-500'}`}> My Appointments </span> </Link></li>
-                            <li onClick={() => setUserClicked(2)}><Link to=''> <span className={`text-xl font-bold m-5 ${userClicked === 2 ? 'text-black' : 'text-slate-500'}`}> Payment History </span> </Link></li>
-                            <li onClick={() => setUserClicked(3)}><Link to=''> <span className={`text-xl font-bold m-5 ${userClicked === 3 ? 'text-black' : 'text-slate-500'}`}> Patient/s History </span> </Link></li>
+                            <li onClick={() => setUserClicked(1)}><Link to='/dboard/doctorpaymenthistory'> <span className={`text-xl font-bold m-5 ${userClicked === 1 ? 'text-black' : 'text-slate-500'}`}> Payment History </span> </Link></li>
+                            <li onClick={() => setUserClicked(2)}><Link to='/dboard/doctorappointment'> <span className={`text-xl font-bold m-5 ${userClicked === 2 ? 'text-black' : 'text-slate-500'}`}> Appointments </span> </Link></li>
+                            <li onClick={() => setUserClicked(3)}><Link to='/dboard/editdoctorprofile'> <span className={`text-xl font-bold m-5 ${userClicked === 3 ? 'text-black' : 'text-slate-500'}`}> Edit Profile </span> </Link></li>
                             <li><Link to='/'> <span className='text-xl font-bold text-slate-500 m-5'> Home </span></Link></li>
                         </ul>
                     }

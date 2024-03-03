@@ -54,15 +54,17 @@ export default function SecondRegistration() {
         console.log(name, email, password, speciality, designation, degree, fee , image_link)
 
         const doctorInfo = {
-            'name': name,
-            'password': password,
+            'doctor_name': name,
             'speciality': speciality,
+            'password': password,
             'email': email,
             'designation': designation,
             'ratings': 0.0,
             'fee': fee,
             'degree': degree,
-            'image_link': image_link
+            'image_link': image_link,
+            'slots':0,
+            'time':'2pm to 6pm',
         }
 
         // console.log(doctorInfo)
