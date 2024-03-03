@@ -31,7 +31,10 @@ export default function Registration() {
     }
 
     return (
-        <div className='grid grid-cols-1 lg:grid-cols-4'>
+        <div className='flex-col m-9 space-y-10'>
+
+            <h2 className='text-2xl text-slate-400 text-center font-bold'>Welcome To Login Page</h2>
+            <div className='grid grid-cols-1 lg:grid-cols-4'>
             <div className='col-span-2 bg-[#07332F] py-16'>
                 <img src={art} />
                 <img src={sideimg} alt="" className='w-5/6 mx-auto' />
@@ -97,6 +100,7 @@ export default function Registration() {
 
             </div>
 
+        </div>
         </div>
     )
 }

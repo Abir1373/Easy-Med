@@ -1,13 +1,13 @@
 import { useForm } from "react-hook-form"
-import getDoctors from "../../api/getDoctors"
+
 import Doctorcard from "../Appointment/Doctorcard"
 import PagaTitle from "../Shared/PagaTitle"
-import { useState } from "react"
-import { data } from "autoprefixer"
+
+import { useLoaderData } from "react-router-dom"
 
 export default function Doctorpage() {
-    const [doctors, loading] = getDoctors()
-    const [data, setData] = useState(doctors)
+
+    const data = useLoaderData()
     const {
         register,
         handleSubmit,
@@ -27,7 +27,6 @@ export default function Doctorpage() {
 
     }
 
-
     return (
         <div>
             <PagaTitle MainTitle={"Find Doctors"} />
@@ -39,12 +38,13 @@ export default function Doctorpage() {
                 <input type="text" placeholder="Doctors name" className="input input-bordered w-full"  {...register("name")} />
                 <input type="submit" className="btn btn-info" value={`search`} />
             </form>
-            <div className="my-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between items-center gap-4">
+            <div className="my-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 flex justify-center items-center gap-4">
 
-                {loading ?
+                {!data ?
                     <span className="loading loading-ring loading-lg"></span>
                     :
-                    data.map(item => <Doctorcard key={item._id} doctors={item} />)}
+                    data.map(item => <Doctorcard key={item._id} doctors={item} />)
+                }
             </div>
         </div>
     )
