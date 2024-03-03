@@ -9,7 +9,7 @@ const getUsers = () => {
         queryKey: ['users', user?.email],
         queryFn: async () => {
             const token = localStorage.getItem('access-token')
-            const res = await fetch(`http://localhost:5000/users`,)
+            const res = await fetch(`http://localhost:5000/users`)
             return res.json()
         },
     })

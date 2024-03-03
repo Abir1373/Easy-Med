@@ -3,7 +3,8 @@ import { useLoaderData, useLocation } from "react-router-dom"
 import PagaTitle from "../Shared/PagaTitle"
 import Doctorcard from "./Doctorcard"
 
-export default function ShowDoctors() {
+
+const ShowDoctors = () => {
     const data = useLoaderData()
     console.log(data)
     const [doctors, setDoctors] = useState(data)
@@ -16,4 +17,6 @@ export default function ShowDoctors() {
             </div>
         </div>
     )
-}
+};
+
+export default ShowDoctors;
