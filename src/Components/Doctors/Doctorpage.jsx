@@ -38,7 +38,7 @@ export default function Doctorpage() {
                 <input type="text" placeholder="Doctors name" className="input input-bordered w-full"  {...register("name")} />
                 <input type="submit" className="btn btn-info" value={`search`} />
             </form>
-            <div className="my-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 flex justify-center items-center gap-4">
+            <div className="my-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-4">
 
                 {!data ?
                     <span className="loading loading-ring loading-lg"></span>

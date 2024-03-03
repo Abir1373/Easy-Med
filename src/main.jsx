@@ -57,6 +57,10 @@ const router = createBrowserRouter([
         element: <App />
       },
       {
+        path: 'about',
+        element: <About></About>
+      },
+      {
         path: "/appointment",
         element: <ChooseService />
       },
@@ -78,11 +82,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/doctors",
-        element: <Doctorpage /> ,
+        element: <Doctorpage />,
         loader: async () => {
           const res = await axios.get(`http://localhost:5000/doctors?`)
           console.log(res.data)
-          return res.data 
+          return res.data
         }
       },
       {
@@ -93,9 +97,9 @@ const router = createBrowserRouter([
         path: "/services/:speciality",
         element: <ShowDoctors />,
         loader: async ({ params }) => {
-          const res = await axios.get(`http://localhost:5000/doctors?speciality=${params.speciality}`)
+          const res = await axios.get(`http://localhost:5000/speciality?speciality=${params.speciality}`)
           console.log(res.data)
-          return res.data 
+          return res.data
         }
       }
     ],
@@ -145,10 +149,6 @@ const router = createBrowserRouter([
         element: <EditDoctorProfile />
       },
     ],
-  },
-  {
-    path: 'about',
-    element: <About></About>
   },
   {
     path: '/registration',
