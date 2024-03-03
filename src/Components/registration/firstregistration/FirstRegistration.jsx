@@ -4,39 +4,40 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../../../providers/AuthProvider'
 import axios from 'axios';
+import { useForm } from 'react-hook-form'
 
 export default function FirstRegistration() {
     const { createUser } = useContext(AuthContext)
     const navigate = useNavigate()
-    const handleReg = e => {
-        e.preventDefault()
-        const form = e.target
-        const name = form.name.value
-        const username = form.username.value
-        const email = form.email.value
-        const password = form.password.value
-        console.log(name, username, email, password)
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm()
+
+    const onSubmit = (data) => {
         const UserInfo = {
-            'name': name,
-            'username': username,
-            'email': email,
-            'password': password,
+            'name': data.name,
+            'username': data.username,
+            'email': data.email,
+            'password': data.password,
             'user_role': 'user',
         }
-        createUser(email, password)
+        console.log(UserInfo)
+        createUser(data.email, data.password)
             .then(res => {
                 const user = res.user;
                 console.log(user);
                 axios.post(`http://localhost:5000/users`, UserInfo)
                     .then((res) => {
                         console.log(res)
+                        navigate('/')
                     })
             })
             .catch(err => {
                 console.log(err);
             })
-            navigate('/')
-            
     }
 
 
@@ -48,20 +49,22 @@ export default function FirstRegistration() {
             </div>
             <div className='col-span-2 py-20'>
                 <h2 className="text-center font-bold text-3xl mb-5">Sign Up to Doc House</h2>
-                <form className="max-w-sm mx-auto" onSubmit={handleReg}>
+                <form className="max-w-sm mx-auto" onSubmit={handleSubmit(onSubmit)}>
 
                     <div className="mb-5">
                         <label htmlFor="email" className="font-bold block mb-2 text-sm font-medium text-xl">
                             Name
                         </label>
                         <input
-                            name='name'
                             type="text"
                             id="name"
                             placeholder="Enter your name"
+                            {...register("name", { required: true, maxLength: 40, pattern: /[A-Za-z]{5,}/gm })}
                             className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            required
                         />
+                        {errors.name?.type === 'required' && <p className='font-bold text-xl text-red-600'>required</p>}
+                        {errors.name?.type === 'pattern' && <p className='font-bold text-xl text-red-600'>only characters allowed</p>}
+                        {errors.name?.type === 'maxLength' && <p className='font-bold text-xl text-red-600'>not more than 40 character</p>}
                     </div>
 
                     <div className="mb-5">
@@ -69,13 +72,15 @@ export default function FirstRegistration() {
                             User Name
                         </label>
                         <input
-                            name='username'
                             type="text"
                             id="username"
                             placeholder="Enter your username"
+                            {...register("username", { required: true, maxLength: 12, pattern: /[A-Za-z]{5,}/gm })}
                             className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            required
                         />
+                        {errors.username?.type === 'required' && <p className='font-bold text-xl text-red-600'>required</p>}
+                        {errors.username?.type === 'pattern' && <p className='font-bold text-xl text-red-600'>only characters allowed</p>}
+                        {errors.username?.type === 'maxLength' && <p className='font-bold text-xl text-red-600'>not more than 12 character</p>}
                     </div>
 
                     <div className="mb-5">
@@ -83,26 +88,28 @@ export default function FirstRegistration() {
                             Email Address
                         </label>
                         <input
-                            name='email'
                             type="email"
                             id="email"
                             placeholder="Enter your email"
+                            {...register("email", { required: true, pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g })}
                             className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            required
                         />
+                        {errors.email?.type === 'required' && <p className='font-bold text-xl text-red-600'>required</p>}
+                        {errors.email?.type === 'pattern' && <p className='font-bold text-xl text-red-600'>please provide valid email</p>}
                     </div>
                     <div className="mb-5">
                         <label htmlFor="password" className="block mb-2 text-sm font-medium text-xl font-bold">
                             Your password
                         </label>
                         <input
-                            name='password'
                             type="password"
                             id="password"
                             placeholder="Enter your password"
+                            {...register("password", { required: true, pattern: /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,}$/ })}
                             className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            required
                         />
+                        {errors.password?.type === 'required' && <p className='font-bold text-xl text-red-600'>required</p>}
+                        {errors.password?.type === 'pattern' && <p className='font-bold text-xl text-yellow-500'>Password must contain one digit from 1 to 9, one lowercase letter, one uppercase letter, one special character, no space, and it must be at least 8 characters long.</p>}
                     </div>
                     {/* <div className="flex items-start mb-5">
                         <div className="flex items-center h-5">

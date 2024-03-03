@@ -12,15 +12,14 @@ export default function Registration() {
 
 
     const { signIn } = useContext(AuthContext)
-
-    const handleLogin = (e) => {
-        e.preventDefault();
-        const form = e.target
-        const email = form.email.value
-        const password = form.password.value
-        console.log(email, password)
-
-        signIn(email, password)
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm()
+    const onSubmit = (data) => {
+        signIn(data.email, data.password)
             .then(res => {
                 console.log(res);
                 const user = res.user;
@@ -39,7 +38,7 @@ export default function Registration() {
             </div>
             <div className='col-span-2 py-36'>
                 <h2 className="text-center font-bold text-3xl mb-9">Sign in to Doc House</h2>
-                <form className="max-w-sm mx-auto" onSubmit={handleLogin}>
+                <form className="max-w-sm mx-auto" onSubmit={handleSubmit(onSubmit)}>
                     <div className="mb-5">
                         <label htmlFor="email" className="font-bold block mb-2 text-xl">
                             Email Address
@@ -49,9 +48,10 @@ export default function Registration() {
                             type="email"
                             id="email"
                             placeholder="Enter your email"
+                            {...register("email", { required: true })}
                             className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            required
                         />
+                        {errors.email?.type === 'required' && <p className='font-bold text-xl text-red-600'>required</p>}
                     </div>
                     <div className="mb-5">
                         <label htmlFor="password" className="block mb-2 text-xl font-bold">
@@ -62,9 +62,10 @@ export default function Registration() {
                             type="password"
                             id="password"
                             placeholder="Enter your password"
+                            {...register("password", { required: true })}
                             className="h-16 text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            required
                         />
+                        {errors.password?.type === 'required' && <p className='font-bold text-xl text-red-600'>required</p>}
                     </div>
                     {/* <div className="flex items-start mb-5">
                         <div className="flex items-center h-5">

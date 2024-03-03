@@ -80,10 +80,10 @@ export default function Reviews() {
                             </div>
 
                             {/* { patient_2 review } */}
-                            {/* <div className='w-2/4 items-center border border-[#E6E6E6] shadow-md rounded-md py-10 px-5'>
+                            <div className='w-2/4 items-center border border-[#E6E6E6] shadow-md rounded-md py-10 px-5'>
                                 <div className='flex justify-between items-center'>
                                     <div className='flex flex-col md:flex-row gap-2 items-center'>
-                                        <img src={patient_2} alt="" />
+                                        <img src="https://i.ibb.co/0XwqvJc/patient-2.jpg" alt="" />
                                         <div>
                                             <h1 className="font-bold text-xl">Farhana Hossain</h1>
                                             <p>Brand Designer</p>
@@ -97,7 +97,7 @@ export default function Reviews() {
                                     <p className='text-gray-500'>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknow printer tool a galley of type and scrambled it to make type specimen book has survived not only five centurines.</p>
                                 </div>
 
-                            </div> */}
+                            </div>
 
                         </div>
                     </SwiperSlide>

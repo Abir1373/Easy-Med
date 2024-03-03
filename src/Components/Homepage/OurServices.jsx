@@ -7,7 +7,7 @@ export default function OurServices() {
             <div className='col-span-3 '>
                 <div className='space-y-4'>
                     <h2 className='text-4xl text-[#07332F] font-bold'>Our Services</h2>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inve ntore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                    <p>To establish an environment around the hospital field through the highest level of innovative and technical support which will add value to our society and act as a driven force of our humanity</p>
                 </div>
                 <div className='flex flex-row gap-2 md:gap-6 items-start my-7'>
                     <button className='px-3 py-2 text-white border border-[#F7A582] rounded-md bg-[#F7A582]'>Cavity Protection</button>
@@ -17,7 +17,7 @@ export default function OurServices() {
                 <img src="https://i.ibb.co/b5pV9fv/teeth.png" alt="" />
                 <div className='space-y-4 mt-5'>
                     <h2 className='text-2xl font-bold'>Electro Gastrology Therapy</h2>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inve ntore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                    <p>The stimulator has been shown to reduce vomiting frequency and increase quality of life in patients with gastroparesis. Our center is known as the best among Sylhet.</p>
                 </div>
                 <button className='px-3 py-2 text-[#F7A582] border border-[#F7A582] rounded-md my-5 btn btn-block bg-transparent'>More Details</button>
             </div>
