@@ -13,7 +13,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
-
+import axios from 'axios';
 
 import MainLayout from './Layouts/MainLayout.jsx';
 import App from './App.jsx';
@@ -37,9 +37,9 @@ import FirstRegistration from './Components/registration/firstregistration/First
 import SecondRegistration from './Components/registration/secondregistration/SecondRegistration.jsx';
 import DoctorAppointment from './Components/dashboard/doctorappointment/DoctorAppointment.jsx';
 import DoctorPaymentHistory from './Components/dashboard/doctorPaymentHistory/DoctorPaymentHistory.jsx';
-import DoctorSchedule from './Components/dashboard/doctorschedule/DoctorSchedule.jsx';
 import Doctorpage from './Components/Doctors/Doctorpage.jsx';
 import MakeAppointment from './Components/Appointment/MakeAppointment.jsx';
+import EditDoctorProfile from './Components/dashboard/editdoctorprofile/EditDoctorProfile.jsx';
 
 
 
@@ -88,8 +88,9 @@ const router = createBrowserRouter([
         path: "/services/:speciality",
         element: <ShowDoctors />,
         loader: async ({ params }) => {
-          const res = fetch(`http://localhost:5000/doctors/${params.speciality}`)
-          return (await res).json();
+          const res = await axios.get(`http://localhost:5000/doctors?speciality=${params.speciality}`)
+          console.log(res.data)
+          return res.data 
         }
       }
     ],
@@ -128,15 +129,15 @@ const router = createBrowserRouter([
       },
       {
         path: "doctorappointment",
-        element: <DoctorAppointment />
+        element: <DoctorAppointment />,
       },
       {
         path: "doctorpaymenthistory",
         element: <DoctorPaymentHistory />
       },
       {
-        path: "doctorschedule",
-        element: <DoctorSchedule />
+        path: "editdoctorprofile",
+        element: <EditDoctorProfile />
       },
     ],
   },
