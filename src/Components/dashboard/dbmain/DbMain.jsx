@@ -3,7 +3,6 @@ import getUsers from '../../../api/getUsers';
 import PIECHART from '../../../others/PIECHART';
 
 const DbMain = () => {
-<<<<<<< HEAD
     let [users, refetch] = getUsers()
     if (!users) {
         <span className="loading loading-spinner text-secondary items-center justify-center"></span>
@@ -12,9 +11,6 @@ const DbMain = () => {
     let Users = users.filter(item=>item.user_role==='user')
     let Admins = users.filter(item=>item.user_role==='admin')
     
-=======
-
->>>>>>> 302b90d6dcf3d78264a345068fa059f8a88b114d
     return (
         <div className='flex text-xl font-bold'>
             <PIECHART Doctors={Doctors.length} Users={Users.length} Admins={Admins.length}></PIECHART>

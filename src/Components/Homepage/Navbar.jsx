@@ -19,7 +19,7 @@ export default function Navbar() {
         <li><NavLink to={"/about"}>About</NavLink></li>
         <li><NavLink to={"/appointment"}>Appointment</NavLink></li>
         <li><NavLink to={"/doctors"}>Doctors</NavLink></li>
-        {user && <li><NavLink to={"/dboard/myappointments"}>Dashboard</NavLink></li>}
+        {user && <li><NavLink to={"/dboard/editprofile"}>Dashboard</NavLink></li>}
     </>
     return (
         <div className="navbar bg-[#07332F] fixed top-0 bg-opacity-40 z-20 text-white">

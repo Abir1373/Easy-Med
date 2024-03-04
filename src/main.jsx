@@ -36,17 +36,12 @@ import RegistrationLayout from './Components/registration/RegistrationLayout.jsx
 import FirstRegistration from './Components/registration/firstregistration/FirstRegistration.jsx';
 import SecondRegistration from './Components/registration/secondregistration/SecondRegistration.jsx';
 import DoctorAppointment from './Components/dashboard/doctorappointment/DoctorAppointment.jsx';
-import DoctorPaymentHistory from './Components/dashboard/doctorPaymentHistory/DoctorPaymentHistory.jsx';
 import Doctorpage from './Components/Doctors/Doctorpage.jsx';
 import MakeAppointment from './Components/Appointment/MakeAppointment.jsx';
-<<<<<<< HEAD
 import EditProfile from './Components/dashboard/editprofile/EditProfile.jsx';
-
-=======
-import EditDoctorProfile from './Components/dashboard/editdoctorprofile/EditDoctorProfile.jsx';
 import PrivateRoute from './Components/Routes/PrivateRoute.jsx';
 import MakePrescription from './Components/dashboard/prescription/MakePrescription.jsx';
->>>>>>> 302b90d6dcf3d78264a345068fa059f8a88b114d
+import DoctorHistory from './Components/dashboard/doctorhistory/DoctorHistory.jsx';
 
 
 
@@ -157,8 +152,8 @@ const router = createBrowserRouter([
         element: <DoctorAppointment />,
       },
       {
-        path: "doctorpaymenthistory",
-        element: <DoctorPaymentHistory />
+        path: "doctorhistory",
+        element: <DoctorHistory />
       },
       {
         path: "editprofile",

@@ -106,11 +106,7 @@ const DashboardLayout = ({ children }) => {
                         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                             {/* Sidebar content here */}
                             <li onClick={() => setUserClicked(1)}><Link to='/dboard/myappointments'> <span className={`text-xl font-bold m-5 ${userClicked === 1 ? 'text-black' : 'text-slate-500'}`}> My Appointments </span> </Link></li>
-<<<<<<< HEAD
                             <li onClick={() => setUserClicked(2)}><Link to='/dboard/editprofile'> <span className={`text-xl font-bold m-5 ${userClicked === 2 ? 'text-black' : 'text-slate-500'}`}> Edit Profile </span> </Link></li>
-=======
-                            <li onClick={() => setUserClicked(2)}><Link to='/dboard/myreviews'> <span className={`text-xl font-bold m-5 ${userClicked === 2 ? 'text-black' : 'text-slate-500'}`}> Saved </span> </Link></li>
->>>>>>> 302b90d6dcf3d78264a345068fa059f8a88b114d
                             <li onClick={() => setUserClicked(3)}><Link to='/dboard/myhistory'> <span className={`text-xl font-bold m-5 ${userClicked === 3 ? 'text-black' : 'text-slate-500'}`}> My History </span> </Link></li>
                             <li><Link to='/'> <span className='text-xl font-bold text-slate-500 m-5'> Home </span></Link></li>
                         </ul>
@@ -120,7 +116,7 @@ const DashboardLayout = ({ children }) => {
                         (userrole === 'doctor') &&
                         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                             {/* Sidebar content here */}
-                            <li onClick={() => setUserClicked(1)}><Link to='/dboard/doctorpaymenthistory'> <span className={`text-xl font-bold m-5 ${userClicked === 1 ? 'text-black' : 'text-slate-500'}`}> Payment History </span> </Link></li>
+                            <li onClick={() => setUserClicked(1)}><Link to='/dboard/doctorhistory'> <span className={`text-xl font-bold m-5 ${userClicked === 1 ? 'text-black' : 'text-slate-500'}`}>  History </span> </Link></li>
                             <li onClick={() => setUserClicked(2)}><Link to='/dboard/doctorappointment'> <span className={`text-xl font-bold m-5 ${userClicked === 2 ? 'text-black' : 'text-slate-500'}`}> Appointments </span> </Link></li>
                             <li onClick={() => setUserClicked(3)}><Link to='/dboard/editprofile'> <span className={`text-xl font-bold m-5 ${userClicked === 3 ? 'text-black' : 'text-slate-500'}`}> Edit Profile </span> </Link></li>
                             <li><Link to='/'> <span className='text-xl font-bold text-slate-500 m-5'> Home </span></Link></li>
