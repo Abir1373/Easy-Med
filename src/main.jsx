@@ -41,6 +41,7 @@ import Doctorpage from './Components/Doctors/Doctorpage.jsx';
 import MakeAppointment from './Components/Appointment/MakeAppointment.jsx';
 import EditDoctorProfile from './Components/dashboard/editdoctorprofile/EditDoctorProfile.jsx';
 import PrivateRoute from './Components/Routes/PrivateRoute.jsx';
+import MakePrescription from './Components/dashboard/prescription/MakePrescription.jsx';
 
 
 
@@ -68,6 +69,14 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />
+      },
+      {
+        path: "prescription/:email",
+        element: <MakePrescription></MakePrescription>,
+        loader: async ({ params }) => {
+          const res = params.email
+          return res;
+        }
       },
       {
         path: "/doctors/:id",
