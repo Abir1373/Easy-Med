@@ -6,7 +6,7 @@ const Doctorcard = ({ doctors }) => {
   let { doctor_name, fee, image_link, desingnation, degree, _id } = doctors;
 
   return (
-    <div className="card w-96 bg-base-100 shadow-2xl translate-x-2">
+    <div className="card w-96 bg-base-100 shadow-2xl translate-x-2 mx-auto">
       <figure className="px-10 pt-10">
         {doctors.image_link ?
           <img src={doctors.image_link} alt="..." className="rounded-full w-28 h-28" />

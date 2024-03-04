@@ -26,7 +26,7 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-    
+
     const logOut = () => {
         setLoading(true)
         return signOut(auth);
@@ -37,20 +37,20 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, provider);
     }
 
-    const changePassword = (user,newPassword) => {
+    const changePassword = (user, newPassword) => {
         setLoading(true)
-        return updatePassword(user,newPassword)
+        return updatePassword(user, newPassword)
     }
 
-    const changeEmail = (user,userEmailValue) => {
+    const changeEmail = (user, userEmailValue) => {
         setLoading(true)
-        return updateEmail(user,userEmailValue)
+        return updateEmail(user, userEmailValue)
     }
 
-    const changeProfilePic = (user,imageLink) => {
+    const changeProfilePic = (user, imageLink) => {
         setLoading(true)
-        return updateProfile(user,{
-            photoURL : imageLink
+        return updateProfile(user, {
+            photoURL: imageLink
         })
     }
 
@@ -58,7 +58,6 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             setLoading(false)
-            console.log('Current User ', currentUser);
             if (currentUser) {
                 setUser(currentUser)
                 // axios.post("http://localhost:5000/jwt", { email: currentUser.email }).then(data => {
@@ -86,7 +85,7 @@ const AuthProvider = ({ children }) => {
         googleSignIn,
         changePassword,
         changeEmail,
-        changeProfilePic     
+        changeProfilePic
     }
     return (
         <AuthContext.Provider value={authInfo}>

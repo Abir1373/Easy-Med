@@ -40,6 +40,7 @@ import DoctorPaymentHistory from './Components/dashboard/doctorPaymentHistory/Do
 import Doctorpage from './Components/Doctors/Doctorpage.jsx';
 import MakeAppointment from './Components/Appointment/MakeAppointment.jsx';
 import EditDoctorProfile from './Components/dashboard/editdoctorprofile/EditDoctorProfile.jsx';
+import PrivateRoute from './Components/Routes/PrivateRoute.jsx';
 
 
 
@@ -74,7 +75,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/appointment/:id",
-        element: <MakeAppointment />,
+        element: <PrivateRoute><MakeAppointment /></PrivateRoute>,
         loader: async ({ params }) => {
           const res = fetch(`http://localhost:5000/doctors?_id=${params.id}`)
           return (await res).json();
@@ -106,7 +107,7 @@ const router = createBrowserRouter([
   },
   {
     path: "dboard",
-    element: <DashboardLayout />,
+    element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
     children: [
       {
         path: "dbmain",
