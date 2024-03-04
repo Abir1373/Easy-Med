@@ -19,7 +19,7 @@ export default function Navbar() {
         <li><NavLink to={"/about"}>About</NavLink></li>
         <li><NavLink to={"/appointment"}>Appointment</NavLink></li>
         <li><NavLink to={"/doctors"}>Doctors</NavLink></li>
-        {user && <li><NavLink to={"/dboard"}>Dashboard</NavLink></li>}
+        {user && <li><NavLink to={"/dboard/myappointments"}>Dashboard</NavLink></li>}
     </>
     return (
         <div className="navbar bg-[#07332F] fixed top-0 bg-opacity-40 z-20 text-white">
@@ -29,11 +29,7 @@ export default function Navbar() {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </div>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-gray-500">
-                        <li><NavLink to={"/"}>Home</NavLink></li>
-                        <li><NavLink to={"/about"}>About</NavLink></li>
-                        <li><NavLink to={"/appointment"}>Appointment</NavLink></li>
-                        <li><NavLink to={"/doctors"}>Doctors</NavLink></li>
-                        {user && <li><NavLink to={"/dboard"}>Dashboard</NavLink></li>}
+                        {Navmenu}
                     </ul>
                 </div>
                 <Link to={`/`} className="btn btn-ghost text-xl"><img src={navicon} alt="" /> Easy-Med</Link>
@@ -46,11 +42,7 @@ export default function Navbar() {
             <div className="navbar-end">
                 <div className='hidden lg:flex'>
                     <ul className="menu menu-horizontal px-1">
-                        <li><NavLink to={"/"}>Home</NavLink></li>
-                        <li><NavLink to={"/about"}>About</NavLink></li>
-                        <li><NavLink to={"/appointment"}>Appointment</NavLink></li>
-                        <li><NavLink to={"/doctors"}>Doctors</NavLink></li>
-                        {user && <li><NavLink to={"/dboard"}>Dashboard</NavLink></li>}
+                        {Navmenu}
                     </ul>
                 </div>
                 {
@@ -64,6 +56,7 @@ export default function Navbar() {
                                 </div>
                             </div>
                             <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 text-black">
+                                <li>{user ? user.email : "unknown"}</li>
                                 <li>
                                     <Link to={`/dboard`} className="justify-between">
                                         Profile

@@ -1,6 +1,12 @@
 import React from 'react';
-import data from '../../../../public/appointment.json'
+import getAppointmentUser from '../../../api/getAppointmentUser';
+
 const MyAppointments = () => {
+    let [appointments, refetch] = getAppointmentUser()
+    console.log(appointments)
+    if (!appointments) {
+        return <span className="loading loading-ring loading-lg"></span>
+    }
     return (
         <div>
             <div className="overflow-x-auto">
@@ -8,18 +14,18 @@ const MyAppointments = () => {
                     {/* head */}
                     <thead>
                         <tr>
-                            <th>Doctor's name</th>
-                            <th>fees</th>
-                            <th>Approximate time</th>
+                            <th>Email</th>
+                            <th>date</th>
+                            <th>Serial</th>
                         </tr>
                     </thead>
                     <tbody>
                         {/* row 1 */}
-                        {data.map((item, index) =>
-                            <tr>
-                                <td>{item.doctors_name}</td>
-                                <td>{item.fees}</td>
-                                <td>{item.time}</td>
+                        {appointments.map((item, index) =>
+                            <tr key={index}>
+                                <td>{item.user_email}</td>
+                                <td>{item.appointment_date}</td>
+                                <td>{item.serial_number}</td>
                             </tr>)
                         }
 

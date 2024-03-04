@@ -111,7 +111,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "dbmain",
-        element: <DbMain></DbMain>
+        element: <DbMain></DbMain>,
       },
       {
         path: "addadoctor",

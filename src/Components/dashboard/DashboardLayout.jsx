@@ -10,7 +10,7 @@ const DashboardLayout = ({ children }) => {
     const [clicked, setClicked] = useState(1);
     const [userClicked, setUserClicked] = useState(1);
     const [userrole, setUserRole] = useState('')
-    const [loading , setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
     const { user } = useContext(AuthContext)
 
 
@@ -23,11 +23,11 @@ const DashboardLayout = ({ children }) => {
             // console.log(res)
             setLoading(false)
         }
-        if(user)singleUserFun()
+        if (user) singleUserFun()
     }, [user])
 
-    if(loading || userrole===''){
-         <span>loading</span>
+    if (loading || userrole === '') {
+        <span>loading</span>
     }
 
     // console.log(singleUser)
@@ -77,9 +77,12 @@ const DashboardLayout = ({ children }) => {
                 <div className="drawer-content flex flex-col ">
                     {children}
                     {/* Page content here */}
-                    <Outlet></Outlet>
+                    <div className=' sm:ml-14 lg:ml-0'>
+                        <Outlet></Outlet>
+                    </div>
+
                     {children}
-                    <label htmlFor="my-drawer-2" className="btn btn-neutral drawer-button lg:hidden absolute left-0 top-0"><IoMdMenu width={100} /></label>
+                    <label htmlFor="my-drawer-2" className="btn btn-accent drawer-button lg:hidden absolute left-0 top-0"><IoMdMenu width={100} /></label>
 
                 </div>
                 <div className="drawer-side">
@@ -102,7 +105,7 @@ const DashboardLayout = ({ children }) => {
                         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                             {/* Sidebar content here */}
                             <li onClick={() => setUserClicked(1)}><Link to='/dboard/myappointments'> <span className={`text-xl font-bold m-5 ${userClicked === 1 ? 'text-black' : 'text-slate-500'}`}> My Appointments </span> </Link></li>
-                            <li onClick={() => setUserClicked(2)}><Link to='/dboard/myreviews'> <span className={`text-xl font-bold m-5 ${userClicked === 2 ? 'text-black' : 'text-slate-500'}`}> My Reviews </span> </Link></li>
+                            <li onClick={() => setUserClicked(2)}><Link to='/dboard/myreviews'> <span className={`text-xl font-bold m-5 ${userClicked === 2 ? 'text-black' : 'text-slate-500'}`}> Saved </span> </Link></li>
                             <li onClick={() => setUserClicked(3)}><Link to='/dboard/myhistory'> <span className={`text-xl font-bold m-5 ${userClicked === 3 ? 'text-black' : 'text-slate-500'}`}> My History </span> </Link></li>
                             <li><Link to='/'> <span className='text-xl font-bold text-slate-500 m-5'> Home </span></Link></li>
                         </ul>
