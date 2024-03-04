@@ -4,6 +4,8 @@ const DoctorAppointment = () => {
 
     let [appointments, refetch] = getAppointments()
 
+    console.log(appointments)
+
     if (!appointments) {
         return <span className="loading loading-ring loading-lg"></span>
     }

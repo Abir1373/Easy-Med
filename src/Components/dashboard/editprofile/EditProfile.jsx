@@ -7,7 +7,7 @@ import { AuthContext } from '../../../providers/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 
 
-const EditDoctorProfile = () => {
+const EditProfile = () => {
 
     const { user, changePassword, changeEmail , logOut , changeProfilePic } = useContext(AuthContext)
 
@@ -188,4 +188,4 @@ const EditDoctorProfile = () => {
     );
 };
 
-export default EditDoctorProfile;
+export default EditProfile;

@@ -139,6 +139,6 @@ export default function MakeAppointment() {
                 }
             </div>
         </div>
-        
+
     )
 }

@@ -39,7 +39,8 @@ import DoctorAppointment from './Components/dashboard/doctorappointment/DoctorAp
 import DoctorPaymentHistory from './Components/dashboard/doctorPaymentHistory/DoctorPaymentHistory.jsx';
 import Doctorpage from './Components/Doctors/Doctorpage.jsx';
 import MakeAppointment from './Components/Appointment/MakeAppointment.jsx';
-import EditDoctorProfile from './Components/dashboard/editdoctorprofile/EditDoctorProfile.jsx';
+import EditProfile from './Components/dashboard/editprofile/EditProfile.jsx';
+
 
 
 
@@ -76,15 +77,16 @@ const router = createBrowserRouter([
         path: "/appointment/:id",
         element: <MakeAppointment />,
         loader: async ({ params }) => {
-          const res = fetch(`http://localhost:5000/doctors?_id=${params.id}`)
-          return (await res).json();
+          const res = await axios.get(`http://localhost:5000/doctors?_id=${params.id}`)
+          console.log(res.data)
+          return res.data;
         }
       },
       {
         path: "/doctors",
         element: <Doctorpage />,
         loader: async () => {
-          const res = await axios.get(`http://localhost:5000/doctors?`)
+          const res = await axios.get(`http://localhost:5000/doctors`)
           console.log(res.data)
           return res.data
         }
@@ -145,8 +147,8 @@ const router = createBrowserRouter([
         element: <DoctorPaymentHistory />
       },
       {
-        path: "editdoctorprofile",
-        element: <EditDoctorProfile />
+        path: "editprofile",
+        element: <EditProfile />
       },
     ],
   },
