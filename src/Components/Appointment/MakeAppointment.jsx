@@ -1,12 +1,13 @@
-import { useLoaderData } from "react-router-dom"
+import { useLoaderData, useNavigate } from "react-router-dom"
 import PagaTitle from "../Shared/PagaTitle"
 import useAuth from "../Hooks/useAuth"
 
 import axios from "axios"
+import Swal from "sweetalert2"
 
 export default function MakeAppointment() {
     const doctorinfo = useLoaderData()
-
+    const navigate = useNavigate()
     const { user } = useAuth()
 
     if (!user) {
@@ -40,7 +41,15 @@ export default function MakeAppointment() {
         // console.log(appointmentObject)
 
         const response = await axios.post('http://localhost:5000/patient_appointment', appointmentObject)
-            .then(res => console.log(res.data))
+            .then(res => {
+                console.log(res.data)
+                Swal.fire({
+                    title: "Confirmation successful",
+                    text: "Please make sure that you are on spot at timely.",
+                    icon: "success"
+                })
+                navigate("/")
+            })
             .catch(error => console.log(error))
 
         let updatedData = { 'serial_no': doctorinfo[0].serial_no + 1 }
@@ -124,7 +133,7 @@ export default function MakeAppointment() {
                                 (doctorinfo[0].appointment_status === "open" && (doctorinfo[0].serial_no + 1) <= doctorinfo[0].slots) ?
 
                                     <div className="flex items-center justify-center">
-                                        <button className="btn btn-success text-white text-xl" onClick={handleConfirmPayment}>Confirm Payment</button>
+                                        <button className="btn btn-success text-white text-xl" onClick={handleConfirmPayment}>Confirm</button>
                                     </div>
 
                                     :

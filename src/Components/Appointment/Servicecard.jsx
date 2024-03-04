@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigation } from "react-router-dom";
 
-export default function Servicecard({item}) {
+export default function Servicecard({ item }) {
     console.log(item)
     return (
         <div className='border-2 border-green-600 rounded-md text-center px-3 py-4'>

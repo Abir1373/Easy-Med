@@ -39,8 +39,14 @@ import DoctorAppointment from './Components/dashboard/doctorappointment/DoctorAp
 import DoctorPaymentHistory from './Components/dashboard/doctorPaymentHistory/DoctorPaymentHistory.jsx';
 import Doctorpage from './Components/Doctors/Doctorpage.jsx';
 import MakeAppointment from './Components/Appointment/MakeAppointment.jsx';
+<<<<<<< HEAD
 import EditProfile from './Components/dashboard/editprofile/EditProfile.jsx';
 
+=======
+import EditDoctorProfile from './Components/dashboard/editdoctorprofile/EditDoctorProfile.jsx';
+import PrivateRoute from './Components/Routes/PrivateRoute.jsx';
+import MakePrescription from './Components/dashboard/prescription/MakePrescription.jsx';
+>>>>>>> 302b90d6dcf3d78264a345068fa059f8a88b114d
 
 
 
@@ -70,12 +76,20 @@ const router = createBrowserRouter([
         element: <Login />
       },
       {
+        path: "prescription/:email",
+        element: <MakePrescription></MakePrescription>,
+        loader: async ({ params }) => {
+          const res = params.email
+          return res;
+        }
+      },
+      {
         path: "/doctors/:id",
         element: <DoctorProfile />
       },
       {
         path: "/appointment/:id",
-        element: <MakeAppointment />,
+        element: <PrivateRoute><MakeAppointment /></PrivateRoute>,
         loader: async ({ params }) => {
           const res = await axios.get(`http://localhost:5000/doctors?_id=${params.id}`)
           console.log(res.data)
@@ -108,11 +122,11 @@ const router = createBrowserRouter([
   },
   {
     path: "dboard",
-    element: <DashboardLayout />,
+    element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
     children: [
       {
         path: "dbmain",
-        element: <DbMain></DbMain>
+        element: <DbMain></DbMain>,
       },
       {
         path: "addadoctor",
